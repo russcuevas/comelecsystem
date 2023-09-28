@@ -1,3 +1,6 @@
+<?php
+include '../database/connection.php';
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -5,6 +8,7 @@
     <title> Comelec System </title>
     <link rel="stylesheet" href="../assets/form/css/form.css">
     <link rel="shortcut icon" href="../assets/dashboard/img/comelec.png" type="image/x-icon">
+    <link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,24 +25,27 @@
         <div class="form-content">
           <div class="login-form">
             <div class="title">Login</div>
-          <form action="#">
+          <form id="login-form" action="functions/login.php" method="POST">
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" placeholder="Enter your email" required>
+                <input type="text" name="email" placeholder="Enter your email">
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Enter your password" required>
+                <input type="password" name="password" placeholder="Enter your password">
               </div>
               <div class="text"><a href="#">Forgot password?</a></div>
               <div class="button input-box">
-                <input type="submit" value="Login">
+                <input type="submit" name="submit" value="Login">
               </div>
             </div>
         </form>
       </div>
     </div>
   </div>
+  <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="../ajax/admin/login.js"></script>
 </body>
 </html>

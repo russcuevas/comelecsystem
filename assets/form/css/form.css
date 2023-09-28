@@ -55,7 +55,7 @@ body{
   height: 100%;
   width: 100%;
   background: #337ab7;
-  opacity: 0.7;
+  opacity: 0;
 }
 .container .cover::after{
   opacity: 0.3;
