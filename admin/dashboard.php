@@ -7,6 +7,10 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
+// GET THE TOTAL NUMBER OF REGISTERED VOTERS
+$stmt = $conn->query("SELECT COUNT(*) FROM `tbl_voters`");
+$totalVoters = $stmt->fetchColumn();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -63,7 +67,14 @@ if (!isset($_SESSION['admin_id'])) {
             <li class="nav-item">
                 <a class="nav-link" href="registered_users.php">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Registered Voters</span></a>
+                    <span>Voters</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a href="profile.php" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Settings</span>
+                </a>
             </li>
 
 
@@ -145,7 +156,7 @@ if (!isset($_SESSION['admin_id'])) {
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                                 Total Voters</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">23</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalVoters ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-user fa-2x text-gray-300"></i>

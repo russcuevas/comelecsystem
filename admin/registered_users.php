@@ -66,16 +66,23 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                 </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="registered_users.php">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Registered Voters</span></a>
+                    <span>Voters</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a href="profile.php" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Settings</span>
+                </a>
             </li>
 
 
