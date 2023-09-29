@@ -1,5 +1,11 @@
 <?php
 include '../database/connection.php';
+
+session_start();
+if (isset($_SESSION['admin_id'])) {
+    header('location: dashboard.php');
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

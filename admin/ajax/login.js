@@ -24,14 +24,7 @@ $(document).ready(function () {
                 console.log(response);
 
                 if (response.status === "success") {
-                    Swal.fire({
-                        icon: "success",
-                        title: "Successfully login",
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 2000,
-                    });
+                    window.location.href = "dashboard.php";
                 } else {
                     Swal.fire({
                         icon: "error",

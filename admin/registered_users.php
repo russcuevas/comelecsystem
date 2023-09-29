@@ -1,6 +1,12 @@
 <?php
 include '../database/connection.php';
 
+session_start();
+if (!isset($_SESSION['admin_id'])) {
+    header('location: login.php');
+    exit();
+}
+
 $fetch = "SELECT * FROM `tbl_voters`";
 $stmt = $conn->query($fetch);
 $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -191,9 +197,9 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <td></td>
                                             <td><?php echo $voters['date_registered'] ?></td>
                                             <td>
-                                                <a href="view_registered_voters?id="><i class="fa-solid fa-eye"></i></a>
-                                                <a href="edit_registered_voters?id="><i class="fa-solid fa-pen-to-square"></i></a>
-                                                <a href="delete_registered_voters?id="><i class="fa-solid fa-trash"></i></a>
+                                                <a href="view_registered_voters.php?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-eye"></i></a>
+                                                <a href="edit_registered_voters.php?id="><i class="fa-solid fa-pen-to-square"></i></a>
+                                                <a href="delete_registered_voters.php?id="><i class="fa-solid fa-trash"></i></a>
                                             </td>
                                         </tr>
                                         <?php endforeach;?>
@@ -255,7 +261,8 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <!-- Right Column -->
                             <div class="form-group">
                                 <label for="contact">Contact</label>
-                                <input type="text" name="contact" class="form-control" id="contact" placeholder="Enter Contact" required>
+                                <input type="text" name="contact" class="form-control" id="contact" placeholder="Enter Contact" required
+                                pattern="[0-9]{11}" maxlength="11">
                             </div>
                             <div class="form-group">
                                 <label for="occupation">Occupation</label>

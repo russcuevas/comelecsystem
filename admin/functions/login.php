@@ -1,5 +1,6 @@
 <?php
 include '../../database/connection.php';
+session_start();
 
 $response = array();
 
@@ -12,6 +13,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if ($admin && sha1($password) === $admin['password']) {
+        $_SESSION['admin_id'] = $admin['id'];
+        $_SESSION['login_success'] = true;
         $response['status'] = 'success';
     } else {
         $response['status'] = 'error';
@@ -20,6 +23,5 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $response['status'] = 'error';
 }
 
-// Send the response as JSON
 header('Content-Type: application/json');
 echo json_encode($response);
