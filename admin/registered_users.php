@@ -1,3 +1,10 @@
+<?php
+include '../database/connection.php';
+
+$fetch = "SELECT * FROM `tbl_voters`";
+$stmt = $conn->query($fetch);
+$voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <html lang="en">
@@ -29,6 +36,7 @@
     <link rel="stylesheet" href="../assets/dashboard/css/sb-admin-2.min.css">
     <!-- Custom styles for this page -->
     <link rel="stylesheet" href="../assets/dashboard/vendor/datatables/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
 
 </head>
 
@@ -101,7 +109,7 @@
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
                                 <img class="img-profile rounded-circle"
-                                    src="../assets/img/comelec.png" alt="'s Profile Picture">
+                                    src="../assets/dashboard/img/comelec.png" alt="'s Profile Picture">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -158,6 +166,8 @@
                                             <th>Image</th>
                                             <th>Full name</th>
                                             <th>Age</th>
+                                            <th>Contact</th>
+                                            <th>Birthday</th>
                                             <th>Address</th>
                                             <th>Occupation</th>
                                             <th>Date Registered</th>
@@ -166,19 +176,27 @@
                                     </thead>
 
                                     <tbody>
+                                        <?php foreach ($voter as $voters): ?>
                                         <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
+                                        <td><img style="height: 50px; width: 50px; border-radius: 50px;"
+                                            src="../assets/dashboard/images/<?php echo $voters['profile_picture']; ?>"
+                                            alt="">
+                                        </td>
+
+                                            <td><?php echo $voters['name']; ?></td>
+                                            <td><?php echo $voters['age']; ?></td>
+                                            <td><?php echo $voters['contact']; ?></td>
+                                            <td><?php echo $voters['birthday']; ?></td>
+                                            <td><?php echo $voters['address']; ?></td>
+                                            <td></td>
+                                            <td><?php echo $voters['date_registered'] ?></td>
                                             <td>
                                                 <a href="view_registered_voters?id="><i class="fa-solid fa-eye"></i></a>
                                                 <a href="edit_registered_voters?id="><i class="fa-solid fa-pen-to-square"></i></a>
                                                 <a href="delete_registered_voters?id="><i class="fa-solid fa-trash"></i></a>
                                             </td>
                                         </tr>
+                                        <?php endforeach;?>
                                     </tbody>
 
                                 </table>
@@ -196,9 +214,9 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-     <!-- Modal -->
+<!-- Modal -->
 <div id="employeeModal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document"> <!-- Added the 'modal-lg' class for a wider modal -->
+    <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Add Voters</h5>
@@ -206,7 +224,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="POST" action="" enctype="multipart/form-data">
+            <form id="add-form" method="POST" action="functions/add_voters.php" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
@@ -238,6 +256,10 @@
                             <div class="form-group">
                                 <label for="contact">Contact</label>
                                 <input type="text" name="contact" class="form-control" id="contact" placeholder="Enter Contact" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="occupation">Occupation</label>
+                                <input type="text" name="occupation" class="form-control" id="occupation" placeholder="Enter Occupation" required>
                             </div>
                             <div class="form-group">
                                 <label for="address">Address</label>
@@ -275,6 +297,9 @@
     <!-- Page level custom scripts -->
     <script src="../assets/dashboard/js/demo/datatables-demo.js"></script>
     <script src="../assets/dashboard/js/users.js"></script>
+    <!-- SWEETALERT -->
+    <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="ajax/add_voters.js"></script>
 </body>
 
 </html>

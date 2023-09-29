@@ -9,7 +9,7 @@ $(document).ready(function () {
                 icon: "warning",
                 title: "Please fill up all fields",
                 toast: true,
-                position: "top-end",
+                position: "top-end", 
                 showConfirmButton: false,
                 timer: 2000,
             });
@@ -21,9 +21,17 @@ $(document).ready(function () {
             url: "functions/login.php",
             data: formData,
             success: function (response) {
+                console.log(response);
 
-                if (response === "success") {
-                    window.location.href = "logged_in.php";
+                if (response.status === "success") {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Successfully login",
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
                 } else {
                     Swal.fire({
                         icon: "error",

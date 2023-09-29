@@ -29,11 +29,11 @@ include '../database/connection.php';
             <div class="input-boxes">
               <div class="input-box">
                 <i class="fas fa-envelope"></i>
-                <input type="text" name="email" placeholder="Enter your email">
+                <input type="text" id="email" name="email" placeholder="Enter your email">
               </div>
               <div class="input-box">
                 <i class="fas fa-lock"></i>
-                <input type="password" name="password" placeholder="Enter your password">
+                <input type="password" id="password" name="password" placeholder="Enter your password">
               </div>
               <div class="text"><a href="#">Forgot password?</a></div>
               <div class="button input-box">
@@ -45,7 +45,9 @@ include '../database/connection.php';
     </div>
   </div>
   <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="../ajax/admin/login.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="ajax/login.js"></script>
+
+
 </body>
 </html>

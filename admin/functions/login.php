@@ -1,23 +1,25 @@
 <?php
 include '../../database/connection.php';
 
-if (isset($_POST['submit'])) {
+$response = array();
+
+if (isset($_POST['email']) && isset($_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    if (empty($email) || empty($password)) {
-        echo 'error';
-    } else {
-        $stmt = $conn->prepare("SELECT * FROM `tbl_admin` WHERE email = ?");
-        $stmt->execute([$email]);
-        $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $conn->prepare("SELECT * FROM `tbl_admin` WHERE email = ?");
+    $stmt->execute([$email]);
+    $admin = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($admin && sha1($password) === $admin['password']) {
-            echo 'success';
-        } else {
-            echo 'error';
-        }
+    if ($admin && sha1($password) === $admin['password']) {
+        $response['status'] = 'success';
+    } else {
+        $response['status'] = 'error';
     }
 } else {
-    echo 'error';
+    $response['status'] = 'error';
 }
+
+// Send the response as JSON
+header('Content-Type: application/json');
+echo json_encode($response);
