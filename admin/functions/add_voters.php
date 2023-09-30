@@ -38,7 +38,7 @@ if (
         $response['status'] = 'success';
     }
 } else {
-    $response['status'] = 'error';
+    header('location: ../login.php');
 }
 
 header('Content-Type: application/json');

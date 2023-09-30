@@ -66,13 +66,13 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                 </li>
 
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="registered_users.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Voters</span></a>
@@ -205,7 +205,7 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
                                             <td>
                                                 <a href="view_registered_voters.php?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-eye"></i></a>
-                                                <a href="edit_registered_voters.php?id="><i class="fa-solid fa-pen-to-square"></i></a>
+                                                <a href="edit_registered_voters.php?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
                                                 <a href="delete_registered_voters.php?id="><i class="fa-solid fa-trash"></i></a>
                                             </td>
                                         </tr>

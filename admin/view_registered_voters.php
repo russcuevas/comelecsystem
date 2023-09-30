@@ -2,9 +2,12 @@
 include '../database/connection.php';
 
 session_start();
-
 if (!isset($_SESSION['admin_id'])) {
     header('location: login.php');
+}
+
+if (!isset($_GET['id']) || empty($_GET['id'])) {
+    header('location: dashboard.php');
 }
 
 if (isset($_GET['id'])) {
@@ -12,7 +15,12 @@ if (isset($_GET['id'])) {
 
     $stmt = $conn->prepare("SELECT * FROM `tbl_voters` WHERE id = ?");
     $stmt->execute([$id]);
-    $voter = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($stmt->rowCount() === 0) {
+        header('location: dashboard.php');
+    } else {
+        $voter = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>
