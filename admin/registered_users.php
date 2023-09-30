@@ -206,7 +206,9 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <td>
                                                 <a href="view_registered_voters.php?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-eye"></i></a>
                                                 <a href="edit_registered_voters.php?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                <a href="delete_registered_voters.php?id="><i class="fa-solid fa-trash"></i></a>
+                                                <a href="#" class="delete-voter-link" data-delete-voter-id="<?php echo $voters['id']; ?>" data-toggle="modal" data-target="#deleteModal">
+                                                    <i class="fa-solid fa-trash"></i>
+                                                </a>
                                             </td>
                                         </tr>
                                         <?php endforeach;?>
@@ -292,6 +294,28 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </div>
 </div>
 
+    <!-- Delete Modal -->
+    <div id="deleteModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirm Deletion</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete this data?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
 
 
     <!-- Bootstrap core JavaScript-->
@@ -314,6 +338,7 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- SWEETALERT -->
     <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="ajax/add_voters.js"></script>
+    <script src="ajax/delete_voter.js"></script>
 </body>
 
 </html>

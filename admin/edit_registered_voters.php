@@ -169,7 +169,7 @@ if (isset($_GET['id'])) {
                         <i class="fas fa-fw fa-tachometer-alt"></i> Add voters</a><span style="font-size: 20px; color: grey;"> /
                     <a type="disabled" style="font-size: 20px; font-weight: 900">Update voters</a></span></h1>
 
-                <div class="container mt-5">
+                <div class="container mt-3">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="card">

@@ -50,6 +50,7 @@ if (isset($_GET['id'])) {
     <h1 class="text-center mt-5">Voter's Certification</h1>
     <p class="bold text-center">This is to certify that lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo rem dolores necessitatibus vel accusamus eum voluptatibus dolor quibusdam at nobis nesciunt fugiat, odit magnam aperiam blanditiis magni repellat dicta deserunt!</p>
 
+    <p id="infoRegister" class="text-center">Registration Information</p>
     <div class="row voter-info">
         <div class="col-md-6">
             <img id="imageProfile" style="height: 100px; width: 100px;" src="../assets/dashboard/images/<?php echo $voter['profile_picture']; ?>" alt="">
@@ -63,16 +64,14 @@ if (isset($_GET['id'])) {
         </div>
     </div>
 
-    <p id="infoRegister" class="underline text-center">Registration Information</p>
     <div class="row voter-regis">
         <div class="col-md-6">
-            <p class="bold">Date registered : </p>
-            <p><?php echo date('m-d-Y / h:i A', strtotime($voter['date_registered'])); ?></p>
+            <p class="bold">Date Issue : </p>
+            <p id="datetime"></p>
         </div>
         <div class="col-md-6">
             <p class="bold">Signed by : </p>
             <p>Russel Vincent C. Cuevas</p>
-            <p style="margin-top: -12px; font-size: 15px">HEAD OF COMELEC OFFICE</p>
         </div>
     </div>
 
@@ -90,6 +89,18 @@ if (isset($_GET['id'])) {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="../assets/dashboard/print/print.js"></script>
+<script>
+        function updateDateTime() {
+            var now = new Date();
+            var date = now.toLocaleDateString();
+            var time = now.toLocaleTimeString();
+
+            document.getElementById("datetime").innerHTML = date + " / " + time;
+        }
+
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
 
 </body>
 </html>

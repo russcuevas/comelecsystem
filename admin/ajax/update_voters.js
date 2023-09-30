@@ -1,3 +1,4 @@
+// UPDATE VOTERS FUNCTIONALITY
 $(document).ready(function(){
     $("#update-form").submit(function(event){
         event.preventDefault();
