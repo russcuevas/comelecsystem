@@ -80,7 +80,7 @@ if (isset($_GET['id'])) {
     </footer>
 
     <div class="d-flex justify-content-end mt-3">
-        <button class="btn btn-info text-white" id="printButton">Print Voters Certificate</button>
+        <button class="btn btn-info text-white" style="background-color: #337ab7 !important;" id="printButton">Print Voters Certificate</button>
     </div>
 </div>
 

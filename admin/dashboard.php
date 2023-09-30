@@ -35,7 +35,7 @@ $totalVoters = $stmt->fetchColumn();
 
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="../assets/dashboard/css/sb-admin-2.min.css">
-
+    <link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
 </head>
 
 <body id="page-top">
@@ -193,12 +193,13 @@ $totalVoters = $stmt->fetchColumn();
     <script src="../assets/dashboard/js/demo/chart-pie-demo.js"></script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
     <?php if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true): ?>
         <script>
             $(document).ready(function () {
                 Swal.fire({
                     icon: "success",
+                    iconColor: '#337ab7',
                     title: "Successfully logged in",
                     toast: true,
                     position: "top-end",

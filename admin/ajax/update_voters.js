@@ -17,6 +17,7 @@ $(document).ready(function(){
                 if (response.status === "success"){
                     Swal.fire({
                         icon: "success",
+                        iconColor: '#337ab7',
                         title: "Voters Updated successfully",
                         toast: true,
                         position: "top-end",

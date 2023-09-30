@@ -13,6 +13,7 @@ $(document).ready(function () {
                 if (response === "success") {
                     Swal.fire({
                         icon: "success",
+                        iconColor: '#337ab7',
                         title: "Voter successfully deleted",
                         timer: 3000,
                         toast: true,
