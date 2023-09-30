@@ -147,13 +147,13 @@ if (isset($_GET['id'])) {
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-success"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-success"></i>
                                     Activity Log
-                                </a>
+                                </a> -->
 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="functions/logout.php">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i>
                                     Logout
                                 </a>
@@ -163,11 +163,17 @@ if (isset($_GET['id'])) {
                 </nav>
                 <!-- End of Topbar -->
 
+                <!-- Page Heading -->
+                    <h1 class="h3 mb-2 ml-5 text-gray-800"><a href="registered_users.php" style="font-size: 20px; font-weight: 900; color: #337ab7
+                        ; text-decoration: none;">
+                        <i class="fas fa-fw fa-tachometer-alt"></i> Add voters</a><span style="font-size: 20px; color: grey;"> /
+                    <a type="disabled" style="font-size: 20px; font-weight: 900">Update voters</a></span></h1>
+
                 <div class="container mt-5">
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="card">
-                                <div class="card-header" style="font-size: 30px;">Update Voter</div>
+                                <div class="card-header" style="font-size: 30px;">Update voters</div>
                                 <div class="card-body">
                                     <form id="update-form" method="POST" action="functions/update_voters.php" enctype="multipart/form-data">
                                         <div class="row">

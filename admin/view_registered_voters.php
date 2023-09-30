@@ -36,7 +36,7 @@ if (isset($_GET['id'])) {
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/dashboard/css/registered_voters.css">
     <link rel="shortcut icon" href="../assets/dashboard/img/comelec.png" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/dashboard/print.css" media="print">
+    <link rel="stylesheet" href="../assets/dashboard/print/print.css" media="print">
 </head>
 <body>
 <div class="container mt-3">
@@ -47,7 +47,7 @@ if (isset($_GET['id'])) {
             <p class="header">Commission on Elections</p>
         </div>
     </div>
-    <h1 class="text-center mt-3">Voter's Certification</h1>
+    <h1 class="text-center mt-5">Voter's Certification</h1>
     <p class="bold text-center">This is to certify that lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo rem dolores necessitatibus vel accusamus eum voluptatibus dolor quibusdam at nobis nesciunt fugiat, odit magnam aperiam blanditiis magni repellat dicta deserunt!</p>
 
     <div class="row voter-info">
@@ -72,6 +72,7 @@ if (isset($_GET['id'])) {
         <div class="col-md-6">
             <p class="bold">Signed by : </p>
             <p>Russel Vincent C. Cuevas</p>
+            <p style="margin-top: -12px; font-size: 15px">HEAD OF COMELEC OFFICE</p>
         </div>
     </div>
 
@@ -88,18 +89,7 @@ if (isset($_GET['id'])) {
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    // Get a reference to the "Print" button
-    var printButton = document.getElementById('printButton');
-
-    // Add a click event listener to the "Print" button
-    printButton.addEventListener('click', function () {
-        // Show the print dialog when the button is clicked
-        window.print();
-    });
-});
-</script>
+<script src="../assets/dashboard/print/print.js"></script>
 
 </body>
 </html>

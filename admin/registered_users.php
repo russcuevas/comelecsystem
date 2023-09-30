@@ -135,13 +135,13 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-success"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <!-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-success"></i>
                                     Activity Log
-                                </a>
+                                </a> -->
 
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="">
+                                <a class="dropdown-item" href="functions/logout.php">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-danger"></i>
                                     Logout
                                 </a>

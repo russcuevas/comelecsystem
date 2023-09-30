@@ -22,13 +22,13 @@
             font-weight: bold;
         }
         .logo {
-            max-width: 100px;
+            max-width: 200px !important;
         }
         .header {
             font-weight: bold;
         }
         .title-container {
-            margin-left: 80px !important;
+            margin-left: 50px !important;
         }
         .footer {
             margin-top: 20px;
