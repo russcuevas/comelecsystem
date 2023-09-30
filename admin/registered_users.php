@@ -199,10 +199,10 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <td><?php echo $voters['name']; ?></td>
                                             <td><?php echo $voters['age']; ?></td>
                                             <td><?php echo $voters['contact']; ?></td>
-                                            <td><?php echo $voters['birthday']; ?></td>
+                                            <td><?php echo date('m-d-Y', strtotime($voters['birthday'])); ?></td>
                                             <td><?php echo $voters['address']; ?></td>
-                                            <td></td>
-                                            <td><?php echo $voters['date_registered'] ?></td>
+                                            <td><?php echo $voters['occupation']; ?></td>
+                                            <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
                                             <td>
                                                 <a href="view_registered_voters.php?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-eye"></i></a>
                                                 <a href="edit_registered_voters.php?id="><i class="fa-solid fa-pen-to-square"></i></a>

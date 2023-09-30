@@ -28,6 +28,8 @@ document
         }
     });
 
+
+
 flatpickr("#birthday", {
     dateFormat: "Y-m-d",
 });

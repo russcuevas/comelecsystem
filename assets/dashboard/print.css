@@ -1,0 +1,61 @@
+/* print.css */
+@media print {
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 35px;
+            height: 100vh;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .underline {
+            text-decoration: underline;
+        }
+        .bold {
+            font-weight: bold;
+        }
+        .logo {
+            max-width: 100px;
+        }
+        .header {
+            font-weight: bold;
+        }
+        .title-container {
+            margin-left: 80px !important;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 20px !important;
+            color: #888;
+        }
+        .voter-info {
+            margin-top: 100px !important;
+            margin-left: 20px;
+            padding: 20px;
+        }
+
+        .voter-regis{
+            margin-left: 20px;
+            padding: 20px;
+        }
+
+        #imageProfile{
+            height: 200px !important;
+            width: 200px !important;
+        }
+
+        #infoRegister{
+            margin-top: 90px !important;
+        }
+
+        #printButton{
+            display: none;
+        }
+}
