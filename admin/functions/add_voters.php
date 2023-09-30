@@ -3,15 +3,7 @@ include '../../database/connection.php';
 
 $response = array();
 
-if (
-    isset($_POST['name']) &&
-    isset($_POST['email']) &&
-    isset($_POST['age']) &&
-    isset($_POST['birthday']) &&
-    isset($_POST['contact']) &&
-    isset($_POST['address']) &&
-    isset($_FILES['profile_picture'])
-) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $age = $_POST['age'];

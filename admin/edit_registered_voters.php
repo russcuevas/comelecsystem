@@ -169,50 +169,50 @@ if (isset($_GET['id'])) {
                             <div class="card">
                                 <div class="card-header" style="font-size: 30px;">Update Voter</div>
                                 <div class="card-body">
-                                    <form method="POST" action="functions/update_voters.php" enctype="multipart/form-data">
+                                    <form id="update-form" method="POST" action="functions/update_voters.php" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <input type="hidden" name="existing_profile_picture" value="<?php echo $voter['profile_picture']; ?>">
                                                     <label for="profile_picture">Profile Picture</label>
-                                                    <input type="file" name="profile_picture" class="form-control-file" id="update-profile_picture" accept="image/jpeg, image/png" value="<?php echo $voter['profile_picture']; ?>">
-                                                    <img id="update-preview" src="#" alt="Profile Picture Preview" style="display: none; max-width: 100px; max-height: 100px;">
+                                                    <input type="file" name="profile_picture" class="form-control-file" id="profile_picture" accept="image/jpeg, image/png" value="<?php echo $voter['profile_picture']; ?>">
+                                                    <img id="preview" src="#" alt="Profile Picture Preview" style="display: none; max-width: 100px; max-height: 100px;">
                                                 </div>
                                                 <input type="hidden" name="id" value="<?php echo $voter['id'] ?>">
                                                 <div class="form-group">
                                                     <label for="name">Name</label>
-                                                    <input type="text" name="name" class="form-control" id="update-name" value="<?php echo $voter['name'] ?>" required>
+                                                    <input type="text" name="name" class="form-control" id="name" value="<?php echo $voter['name'] ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="email">Email</label>
-                                                    <input type="email" name="email" class="form-control" id="update-email" value="<?php echo $voter['email'] ?>" required>
+                                                    <input type="email" name="email" class="form-control" id="email" value="<?php echo $voter['email'] ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="age">Age</label>
-                                                    <input type="number" name="age" class="form-control" id="update-age" value="<?php echo $voter['age'] ?>" required>
+                                                    <input type="number" name="age" class="form-control" id="age" value="<?php echo $voter['age'] ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="birthday">Birthday</label>
-                                                    <input type="text" name="birthday" class="form-control" id="update-birthday" value="<?php echo $voter['birthday'] ?>" required>
+                                                    <input type="text" name="birthday" class="form-control" id="birthday" value="<?php echo $voter['birthday'] ?>" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label for="contact">Contact</label>
-                                                    <input type="text" name="contact" class="form-control" id="update-contact" value="<?php echo $voter['contact'] ?>" required pattern="[0-9]{11}" maxlength="11">
+                                                    <input type="text" name="contact" class="form-control" id="contact" value="<?php echo $voter['contact'] ?>" required pattern="[0-9]{11}" maxlength="11">
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="occupation">Occupation</label>
-                                                    <input type="text" name="occupation" class="form-control" id="update-occupation" value="<?php echo $voter['occupation'] ?>" required>
+                                                    <input type="text" name="occupation" class="form-control" id="occupation" value="<?php echo $voter['occupation'] ?>" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="address">Address</label>
-                                                    <input type="text" name="address" class="form-control" id="update-address" value="<?php echo $voter['address'] ?>" required>
+                                                    <input type="text" name="address" class="form-control" id="address" value="<?php echo $voter['address'] ?>" required>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group text-right">
-                                            <button type="submit" name="submit" class="btn btn-primary">Update Voter</button>
+                                            <button type="submit" class="btn btn-primary">Update Voter</button>
                                         </div>
                                     </form>
                                 </div>
@@ -241,7 +241,8 @@ if (isset($_GET['id'])) {
     <script src="../assets/dashboard/js/users.js"></script>
     <!-- SWEETALERT -->
     <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
-    <script src="ajax/add_voters.js"></script>
+    <script src="ajax/update_voters.js"></script>
+    <script src="../assets/dashboard/js/users.js"></script>
 </body>
 
 </html>

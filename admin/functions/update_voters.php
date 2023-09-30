@@ -1,7 +1,9 @@
 <?php
 include '../../database/connection.php';
 
-if (isset($_POST['submit'])) {
+$response = array();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_POST['id'];
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -12,7 +14,6 @@ if (isset($_POST['submit'])) {
     $address = $_POST['address'];
     $existingProfilePicture = $_POST['existing_profile_picture'];
 
-    // Check if 'profile_picture' is set and not empty
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] === 0 && !empty($_FILES['profile_picture']['name'])) {
         $uploadDir = '../../assets/dashboard/images/';
         $fileName = $_FILES['profile_picture']['name'];
@@ -27,11 +28,19 @@ if (isset($_POST['submit'])) {
         $stmt = $conn->prepare("UPDATE `tbl_voters` SET `profile_picture` = ? WHERE `id` = ?");
         $stmt->execute([$fileName, $id]);
     } else {
-        // Use the 'existing_profile_picture' value to update the profile picture
         $stmt = $conn->prepare("UPDATE `tbl_voters` SET `profile_picture` = ? WHERE `id` = ?");
         $stmt->execute([$existingProfilePicture, $id]);
     }
 
     $stmt = $conn->prepare("UPDATE `tbl_voters` SET `name` = ?, `email` = ?, `age` = ?, `birthday` = ?, `contact` = ?, `occupation` = ?, `address` = ? WHERE `id` = ?");
-    $stmt->execute([$name, $email, $age, $birthday, $contact, $occupation, $address, $id]);
+    if ($stmt->execute([$name, $email, $age, $birthday, $contact, $occupation, $address, $id])) {
+        $response['status'] = 'success';
+    } else {
+        $response['status'] = 'error';
+    }
+} else {
+    header('location: ../login.php');
 }
+
+header('Content-Type: application/json');
+echo json_encode($response);
