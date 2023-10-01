@@ -90,13 +90,6 @@ if (isset($_GET['id'])) {
                     <span>Voters</span></a>
             </li>
 
-            <li class="nav-item">
-                <a href="profile.php" class="nav-link">
-                    <i class="fas fa-user"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

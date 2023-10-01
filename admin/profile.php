@@ -4,18 +4,13 @@ include '../database/connection.php';
 session_start();
 if (!isset($_SESSION['admin_id'])) {
     header('location: login.php');
-    exit();
 }
 
-// GET THE TOTAL NUMBER OF REGISTERED VOTERS
-$stmt = $conn->query("SELECT COUNT(*) FROM `tbl_voters`");
-$totalVoters = $stmt->fetchColumn();
+$admin_id = $_SESSION['admin_id'];
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -26,16 +21,26 @@ $totalVoters = $stmt->fetchColumn();
 
     <title>Comelec System</title>
 
+    <!-- Include Datepicker CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Include Datepicker JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+
     <link rel="shortcut icon" href="../assets/dashboard/img/comelec.png" type="image/x-icon">
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" href="../assets/dashboard/vendor/fontawesome-free/css/all.min.css">
+    <!-- {{-- <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css"> --}} -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
-
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="../assets/dashboard/css/sb-admin-2.min.css">
+    <!-- Custom styles for this page -->
+    <link rel="stylesheet" href="../assets/dashboard/vendor/datatables/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
+
 </head>
 
 <body id="page-top">
@@ -58,7 +63,7 @@ $totalVoters = $stmt->fetchColumn();
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -101,7 +106,6 @@ $totalVoters = $stmt->fetchColumn();
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
-
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
@@ -125,53 +129,51 @@ $totalVoters = $stmt->fetchColumn();
                                 </a>
                             </div>
                         </li>
-
                     </ul>
-
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
+                <!-- Page Heading -->
+                    <h1 class="h3 mb-2 ml-5 text-gray-800"><a href="dashboard.php" style="font-size: 20px; font-weight: 900; color: #337ab7
+                        ; text-decoration: none;">
+                        <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a><span style="font-size: 20px; color: grey;"> /
+                    <a type="disabled" style="font-size: 20px; font-weight: 900">Profile</a></span></h1>
 
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800" style="text-transform: capitalize">Admin Dashboard</h1>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
+                <div class="container mt-3">
+                    <div class="row justify-content-center">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header" style="font-size: 30px;">Update password</div>
                                 <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Total Voters</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalVoters ?></div>
+                                    <form id="change-pass" method="POST" action="functions/update_profile.php" enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <input type="hidden" name="id" value="<?php echo $admin_id ?>">
+                                                <div class="form-group">
+                                                    <label for="password">Password</label>
+                                                    <input type="password" name="password" class="form-control" id="password">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="confirm_password">Confirm password</label>
+                                                    <input type="password" name="confirm_password" class="form-control" id="confirm_password">
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">Change password</button>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="container-fluid">
-
-                </div>
-
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
 
     <!-- Bootstrap core JavaScript-->
     <script src="../assets/dashboard/vendor/jquery/jquery.min.js"></script>
     <script src="../assets/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <!-- Core plugin JavaScript-->
     <script src="../assets/dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
 
@@ -179,30 +181,14 @@ $totalVoters = $stmt->fetchColumn();
     <script src="../assets/dashboard/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-    <script src="../assets/dashboard/vendor/chart.js/Chart.min.js"></script>
+    <script src="../assets/dashboard/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="../assets/dashboard/vendor/datatables/dataTables.bootstrap4.min.css"></script>
 
     <!-- Page level custom scripts -->
-    <script src="../assets/dashboard/js/demo/chart-area-demo.js"></script>
-    <script src="../assets/dashboard/js/demo/chart-pie-demo.js"></script>
-
-
+    <script src="../assets/dashboard/js/demo/datatables-demo.js"></script>
+    <!-- SWEETALERT -->
     <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
-    <?php if (isset($_SESSION['login_success']) && $_SESSION['login_success'] === true): ?>
-        <script>
-            $(document).ready(function () {
-                Swal.fire({
-                    icon: "success",
-                    iconColor: '#337ab7',
-                    title: "Successfully logged in",
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 2000,
-                });
-            });
-        </script>
-        <?php unset($_SESSION['login_success']);?>
-    <?php endif;?>
+    <script src="ajax/change_pass.js"></script>
 </body>
 
 </html>

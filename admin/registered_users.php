@@ -78,13 +78,6 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <span>Voters</span></a>
             </li>
 
-            <li class="nav-item">
-                <a href="profile.php" class="nav-link">
-                    <i class="fas fa-user"></i>
-                    <span>Settings</span>
-                </a>
-            </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -127,18 +120,10 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="profile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-success"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
-                                    <i class="fas fa-cogs fa-sm fa-fw mr-2 text-success"></i>
-                                    Settings
-                                </a>
-                                <!-- <a class="dropdown-item" href="#">
-                                    <i class="fas fa-list fa-sm fa-fw mr-2 text-success"></i>
-                                    Activity Log
-                                </a> -->
 
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="functions/logout.php">
@@ -169,7 +154,6 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </div>
                         <div style="margin-top: 20px; margin-left: 19px; display: flex; justify-content: space-between; align-items: center;">
                         <button style="margin-right: 10px;" id="employeeModalBtn" class="d-none d-sm-inline-block btn btn-m btn-primary shadow-sm">Add Voters +</button>
-                            <a href="#" style="margin-right: 20px;" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
