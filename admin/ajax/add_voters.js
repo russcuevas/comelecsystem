@@ -15,6 +15,12 @@ $(document).ready(function() {
                 console.log(response);
 
             if (response.status === "success") {
+                HoldOn.open({
+                    theme: "sk-rect",
+                    message: "Please wait...",
+                    textColor: "#fff",
+                    element: document.body,
+                });
                 Swal.fire({
                     icon: "success",
                     iconColor: '#337ab7',
@@ -24,6 +30,9 @@ $(document).ready(function() {
                     showConfirmButton: false,
                     timer: 2000,
                 });
+                setTimeout(function () {
+                    HoldOn.close();
+                }, 2000);
                 setTimeout(function() {
                     location.reload();
                 }, 2000);

@@ -10,13 +10,19 @@ $(document).ready(function () {
             data: formData,
             dataType: 'json',
             success: function (response) {
-                console.log(response);
+                if (response.status === 'success') {
+                    HoldOn.open({
+                        theme: 'sk-rect',
+                        message: 'Please wait...',
+                    });
+                }
+
                 if (response.status === 'success') {
                     Swal.fire({
                         icon: "success",
                         iconColor: '#337ab7',
                         title: response.message,
-                        timer: 3000,
+                        timer: 1500,
                         toast: true,
                         position: "top-end",
                         showConfirmButton: false,
@@ -24,7 +30,9 @@ $(document).ready(function () {
                         $('#password').val('');
                         $('#confirm_password').val('');
                     });
-                } else if (response.status === 'warning'){
+
+                    HoldOn.close();
+                } else if (response.status === 'warning') {
                     Swal.fire({
                         icon: 'warning',
                         title: response.message,
@@ -32,8 +40,8 @@ $(document).ready(function () {
                         toast: true,
                         position: "top-end",
                         showConfirmButton: false,
-                    })
-                }else{
+                    });
+                } else {
                     Swal.fire({
                         icon: 'error',
                         title: response.message,

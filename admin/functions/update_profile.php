@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     } else {
         $response['status'] = 'error';
-        $response['message'] = 'Password update failed';
+        $response['message'] = 'You use your old password';
         echo json_encode($response);
         exit();
     }

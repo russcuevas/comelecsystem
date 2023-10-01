@@ -17,6 +17,7 @@ if (isset($_SESSION['admin_id'])) {
     <link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/dashboard/css/HoldOn.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    </head>
 <body>
@@ -71,6 +72,7 @@ if (isset($_SESSION['admin_id'])) {
 
   <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../assets/dashboard/js/HoldOn.min.js"></script>
   <script src="ajax/login.js"></script>
   <script src="ajax/forgot_pass.js"></script>
   <script>

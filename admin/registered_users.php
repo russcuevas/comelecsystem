@@ -43,6 +43,7 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Custom styles for this page -->
     <link rel="stylesheet" href="../assets/dashboard/vendor/datatables/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
+    <link rel="stylesheet" href="../assets/dashboard/css/HoldOn.min.css">
 
 </head>
 
@@ -304,6 +305,7 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <!-- Bootstrap core JavaScript-->
     <script src="../assets/dashboard/vendor/jquery/jquery.min.js"></script>
+    <script src="../assets/dashboard/js/HoldOn.min.js"></script>
     <script src="../assets/dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Core plugin JavaScript-->
