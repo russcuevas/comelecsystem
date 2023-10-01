@@ -23,16 +23,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    if (strlen($new_password) < 8 || strlen($new_password) > 12) {
+    if ($new_password !== $confirm_password) {
         $response['status'] = 'error';
-        $response['message'] = 'Password must 8-12 characters';
+        $response['message'] = 'Password not match';
         echo json_encode($response);
         exit();
     }
 
-    if ($new_password !== $confirm_password) {
+    if (strlen($new_password) < 8 || strlen($new_password) > 12) {
         $response['status'] = 'error';
-        $response['message'] = 'Password not match';
+        $response['message'] = 'Password must 8-12 characters';
         echo json_encode($response);
         exit();
     }
