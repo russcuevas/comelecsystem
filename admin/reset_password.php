@@ -9,11 +9,11 @@ if (isset($_GET['token'])) {
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$row) {
-        header('Location: login.php');
+        header('Location: login');
         exit();
     }
 } else {
-    echo "Token parameter is missing. <a href='login.php'>Go back to login</a>";
+    echo "Token parameter is missing. <a href='login'>Go back to login</a>";
     exit();
 }
 

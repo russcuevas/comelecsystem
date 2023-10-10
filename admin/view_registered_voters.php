@@ -3,11 +3,11 @@ include '../database/connection.php';
 
 session_start();
 if (!isset($_SESSION['admin_id'])) {
-    header('location: login.php');
+    header('location: login');
 }
 
 if (!isset($_GET['id']) || empty($_GET['id'])) {
-    header('location: dashboard.php');
+    header('location: dashboard');
 }
 
 if (isset($_GET['id'])) {
@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
     $stmt->execute([$id]);
 
     if ($stmt->rowCount() === 0) {
-        header('location: dashboard.php');
+        header('location: dashboard');
     } else {
         $voter = $stmt->fetch(PDO::FETCH_ASSOC);
     }

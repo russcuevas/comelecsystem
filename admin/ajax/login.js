@@ -24,7 +24,7 @@ $(document).ready(function () {
                 console.log(response);
 
                 if (response.status === "success") {
-                    window.location.href = "dashboard.php";
+                    window.location.href = "dashboard";
                 } else {
                     Swal.fire({
                         icon: "error",

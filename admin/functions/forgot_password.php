@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $mail->isHTML(true);
                 $mail->Subject = 'Password Reset Request';
-                $mail->Body = 'Click the following link to reset your password: <a href="http://localhost/comelecsystem/admin/reset_password.php?token=' . $token . '">Reset Password</a>';
+                $mail->Body = 'Click the following link to reset your password: <a href="http://localhost/comelecsystem/admin/reset_password?token=' . $token . '">Reset Password</a>';
 
                 if ($mail->send()) {
                     $response['status'] = 'success';
@@ -75,7 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             $mail->isHTML(true);
             $mail->Subject = 'Password Reset Request';
-            $mail->Body = 'Click the following link to reset your password: <a href="http://localhost/comelecsystem/admin/reset_password.php?token=' . $token . '">Reset Password</a>';
+            $mail->Body = 'Click the following link to reset your password: <a href="http://localhost/comelecsystem/admin/reset_password?token=' . $token . '">Reset Password</a>';
 
             if ($mail->send()) {
                 $response['status'] = 'success';

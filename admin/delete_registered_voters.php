@@ -3,7 +3,7 @@ include '../database/connection.php';
 
 session_start();
 if (!isset($_SESSION['admin_id'])) {
-    header('location: login.php');
+    header('location: login');
 }
 
 if (isset($_GET['id']) && is_numeric($_GET['id'])) {
@@ -21,8 +21,8 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
             echo "error";
         }
     } else {
-        header('location: dashboard.php');
+        header('location: dashboard');
     }
 } else {
-    header('location: dashboard.php');
+    header('location: dashboard');
 }

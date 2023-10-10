@@ -3,7 +3,7 @@ include '../database/connection.php';
 
 session_start();
 if (!isset($_SESSION['admin_id'])) {
-    header('location: login.php');
+    header('location: login');
 }
 
 $admin_id = $_SESSION['admin_id'];
@@ -65,13 +65,13 @@ $admin_id = $_SESSION['admin_id'];
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item">
-                <a class="nav-link" href="dashboard.php">
+                <a class="nav-link" href="dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                 </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="registered_users.php">
+                <a class="nav-link" href="registered_users">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Voters</span></a>
             </li>
@@ -118,7 +118,7 @@ $admin_id = $_SESSION['admin_id'];
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.php">
+                                <a class="dropdown-item" href="profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-success"></i>
                                     Profile
                                 </a>
@@ -135,7 +135,7 @@ $admin_id = $_SESSION['admin_id'];
                 <!-- End of Topbar -->
 
                 <!-- Page Heading -->
-                    <h1 class="h3 mb-2 ml-5 text-gray-800"><a href="dashboard.php" style="font-size: 20px; font-weight: 900; color: #337ab7
+                    <h1 class="h3 mb-2 ml-5 text-gray-800"><a href="dashboard" style="font-size: 20px; font-weight: 900; color: #337ab7
                         ; text-decoration: none;">
                         <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a><span style="font-size: 20px; color: grey;"> /
                     <a type="disabled" style="font-size: 20px; font-weight: 900">Profile</a></span></h1>

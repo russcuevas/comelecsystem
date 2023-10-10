@@ -25,7 +25,7 @@ $(document).ready(function () {
                             showConfirmButton: false,
                             timer: 2000,
                         }).then(function () {
-                            window.location.href = 'login.php';
+                            window.location.href = 'login';
                         });
                     } else if (response.status === "token_expired") {
                         Swal.fire({
@@ -36,7 +36,7 @@ $(document).ready(function () {
                             confirmButtonText: "OK",
                         }).then(function (result) {
                             if (result.isConfirmed) {
-                                window.location.href = 'forgot_password.php';
+                                window.location.href = 'forgot_password';
                             }
                         });
                     } else {

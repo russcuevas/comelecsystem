@@ -6,7 +6,7 @@ $response = array();
 session_start();
 
 if (!isset($_SESSION['admin_id'])) {
-    header('location: ../login.php');
+    header('location: ../login');
     exit();
 }
 

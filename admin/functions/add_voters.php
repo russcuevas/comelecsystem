@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $response['status'] = 'success';
     }
 } else {
-    header('location: ../login.php');
+    header('location: ../login');
 }
 
 header('Content-Type: application/json');

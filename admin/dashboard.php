@@ -3,7 +3,7 @@ include '../database/connection.php';
 
 session_start();
 if (!isset($_SESSION['admin_id'])) {
-    header('location: login.php');
+    header('location: login');
     exit();
 }
 
@@ -59,13 +59,13 @@ $totalVoters = $stmt->fetchColumn();
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="dashboard.php">
+                <a class="nav-link" href="dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
                 </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="registered_users.php">
+                <a class="nav-link" href="registered_users">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Voters</span></a>
             </li>
@@ -113,7 +113,7 @@ $totalVoters = $stmt->fetchColumn();
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="profile.php">
+                                <a class="dropdown-item" href="profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-success"></i>
                                     Profile
                                 </a>
