@@ -24,7 +24,15 @@ $(document).ready(function () {
                 console.log(response);
 
                 if (response.status === "success") {
-                    window.location.href = "dashboard";
+                    HoldOn.open({
+                        theme: 'sk-rect',
+                        message: 'Please wait...'
+                    });
+
+                    setTimeout(function () {
+                        HoldOn.close();
+                        window.location.href = 'dashboard.php';
+                    }, 1000);
                 } else {
                     Swal.fire({
                         icon: "error",
