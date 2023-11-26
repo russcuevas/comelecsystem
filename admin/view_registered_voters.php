@@ -35,10 +35,11 @@ if (isset($_GET['id'])) {
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/dashboard/css/registered_voters.css">
+    <link rel="stylesheet" href="../assets/dashboard/css/HoldOn.min.css">
     <link rel="shortcut icon" href="../assets/dashboard/img/comelec.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/dashboard/print/print.css" media="print">
 </head>
-<body>
+<body style="background-color: #f5f6fa;">
 <div class="container mt-3">
     <div style="margin-left: 90px;" class="d-flex align-items-center">
         <img src="../assets/dashboard/img/comelec.png" alt="Logo" class="logo">
@@ -47,6 +48,14 @@ if (isset($_GET['id'])) {
             <p class="header">Commission on Elections</p>
         </div>
     </div>
+
+    <div id="loading-overlay">
+        <div id="loading-spinner" class="spinner-border text-primary" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+
     <h1 class="text-center mt-5">Voter's Certification</h1>
     <p class="bold text-center">This is to certify that lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo rem dolores necessitatibus vel accusamus eum voluptatibus dolor quibusdam at nobis nesciunt fugiat, odit magnam aperiam blanditiis magni repellat dicta deserunt!</p>
 
@@ -89,6 +98,9 @@ if (isset($_GET['id'])) {
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="../assets/dashboard/print/print.js"></script>
+<script src="../assets/dashboard/js/HoldOn.min.js"></script>
+<script src="../assets/form/js/"></script>
+
 <script>
         function updateDateTime() {
             var now = new Date();
@@ -100,7 +112,13 @@ if (isset($_GET['id'])) {
 
         updateDateTime();
         setInterval(updateDateTime, 1000);
-    </script>
+
+        window.addEventListener("load", function () {
+        setTimeout(function () {
+            document.getElementById("loading-overlay").style.display = "none";
+        }, 500);
+    });
+</script>
 
 </body>
 </html>

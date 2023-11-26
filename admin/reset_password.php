@@ -21,34 +21,42 @@ if (isset($_GET['token'])) {
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
+
+<head>
     <meta charset="UTF-8">
-    <title> Comelec System </title>
-    <link rel="stylesheet" href="../assets/form/css/form.css">
+    <title>Password Reset - Comelec System</title>
+    <link rel="stylesheet" href="../assets/form/css/forgot-password.css">
     <link rel="shortcut icon" href="../assets/dashboard/img/comelec.png" type="image/x-icon">
-    <link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
+</head>
+
 <body>
-    <h2>Password Reset</h2>
-    <form id="reset-password-form" action="functions/reset_password.php" method="POST">
-        <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>">
-        <div>
-            <label for="new-password">New Password:</label>
-            <input type="password" id="new-password" name="new-password" required>
-        </div>
-        <div>
-            <label for="confirm-password">Confirm Password:</label>
-            <input type="password" id="confirm-password" name="confirm-password" required>
-        </div>
-        <div>
-            <input type="submit" value="Reset Password">
-        </div>
-    </form>
-    <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
+    <div class="container">
+        <form id="reset-password-form" action="functions/reset_password.php" method="POST">
+            <h2>Password Reset</h2>
+            <input type="hidden" name="token" value="<?php echo $_GET['token']; ?>">
+
+            <div class="form-group">
+                <label for="new-password">New Password:</label>
+                <input type="password" id="new-password" name="new-password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password:</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Reset Password</button>
+            </div>
+        </form>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="ajax/reset_pass.js"></script>
 </body>
+
 </html>
