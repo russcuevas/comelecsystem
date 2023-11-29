@@ -28,6 +28,7 @@ if (isset($_GET['id'])) {
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,69 +40,70 @@ if (isset($_GET['id'])) {
     <link rel="shortcut icon" href="../assets/dashboard/img/comelec.png" type="image/x-icon">
     <link rel="stylesheet" href="../assets/dashboard/print/print.css" media="print">
 </head>
+
 <body style="background-color: #f5f6fa;">
-<div class="container mt-3">
-    <div style="margin-left: 90px;" class="d-flex align-items-center">
-        <img src="../assets/dashboard/img/comelec.png" alt="Logo" class="logo">
-        <div class="title-container ml-3">
-            <p class="header">Republic of the Philippines</p>
-            <p class="header">Commission on Elections</p>
+    <div class="container mt-3">
+        <div style="margin-left: 90px;" class="d-flex align-items-center">
+            <img src="../assets/dashboard/img/comelec.png" alt="Logo" class="logo">
+            <div class="title-container ml-3">
+                <p class="header">Republic of the Philippines</p>
+                <p class="header">Commission on Elections</p>
+            </div>
+        </div>
+
+        <div id="loading-overlay">
+            <div id="loading-spinner" class="spinner-border text-primary" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+
+
+        <h1 class="text-center mt-5">Voter's Certification</h1>
+        <p class="bold text-center">This is to certify that lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo rem dolores necessitatibus vel accusamus eum voluptatibus dolor quibusdam at nobis nesciunt fugiat, odit magnam aperiam blanditiis magni repellat dicta deserunt!</p>
+
+        <p id="infoRegister" class="text-center">Registration Information</p>
+        <div class="row voter-info">
+            <div class="col-md-6">
+                <img id="imageProfile" style="height: 100px; width: 100px;" src="../assets/dashboard/images/<?php echo $voter['profile_picture']; ?>" alt="">
+                <p class="bold">Name: <?php echo $voter['name'] ?> </p>
+                <p class="bold">Date of Birth: <?php echo date('m-d-Y', strtotime($voter['birthday'])); ?></p>
+            </div>
+            <div class="col-md-6">
+                <p class="bold">Age: <?php echo $voter['age'] ?> </p>
+                <p class="bold">Occupation: <?php echo $voter['occupation'] ?></p>
+                <p class="bold">Address: <?php echo $voter['address']; ?></p>
+            </div>
+        </div>
+
+        <div class="row voter-regis">
+            <div class="col-md-6">
+                <p class="bold">Date Issue : </p>
+                <p id="datetime"></p>
+            </div>
+            <div class="col-md-6">
+                <p class="bold">Signed by : </p>
+                <p>Russel Vincent C. Cuevas</p>
+            </div>
+        </div>
+
+        <footer class="footer text-center">
+            <p style="color: black; font-weight: 900;">This individual is a registered voter in the <br> <span style="color: red; font-weight: 900;"><?php echo $voter['address']; ?></span> area.</p>
+        </footer>
+
+        <div class="d-flex justify-content-end mt-3">
+            <button class="btn btn-info text-white" style="background-color: #242943 !important;" id="printButton">Print Voters Certificate</button>
         </div>
     </div>
 
-    <div id="loading-overlay">
-        <div id="loading-spinner" class="spinner-border text-primary" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
-    </div>
 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../assets/dashboard/print/print.js"></script>
+    <script src="../assets/dashboard/js/HoldOn.min.js"></script>
+    <script src="../assets/form/js/"></script>
 
-    <h1 class="text-center mt-5">Voter's Certification</h1>
-    <p class="bold text-center">This is to certify that lorem ipsum dolor sit amet consectetur, adipisicing elit. Illo rem dolores necessitatibus vel accusamus eum voluptatibus dolor quibusdam at nobis nesciunt fugiat, odit magnam aperiam blanditiis magni repellat dicta deserunt!</p>
-
-    <p id="infoRegister" class="text-center">Registration Information</p>
-    <div class="row voter-info">
-        <div class="col-md-6">
-            <img id="imageProfile" style="height: 100px; width: 100px;" src="../assets/dashboard/images/<?php echo $voter['profile_picture']; ?>" alt="">
-            <p class="bold">Name: <?php echo $voter['name'] ?> </p>
-            <p class="bold">Date of Birth: <?php echo date('m-d-Y', strtotime($voter['birthday'])); ?></p>
-        </div>
-        <div class="col-md-6">
-            <p class="bold">Age: <?php echo $voter['age'] ?> </p>
-            <p class="bold">Occupation: <?php echo $voter['occupation'] ?></p>
-            <p class="bold">Address: <?php echo $voter['address']; ?></p>
-        </div>
-    </div>
-
-    <div class="row voter-regis">
-        <div class="col-md-6">
-            <p class="bold">Date Issue : </p>
-            <p id="datetime"></p>
-        </div>
-        <div class="col-md-6">
-            <p class="bold">Signed by : </p>
-            <p>Russel Vincent C. Cuevas</p>
-        </div>
-    </div>
-
-    <footer class="footer text-center">
-        <p style="color: black; font-weight: 900;">This individual is a registered voter in the <br> <span style="color: red; font-weight: 900;"><?php echo $voter['address']; ?></span> area.</p>
-    </footer>
-
-    <div class="d-flex justify-content-end mt-3">
-        <button class="btn btn-info text-white" style="background-color: #337ab7 !important;" id="printButton">Print Voters Certificate</button>
-    </div>
-</div>
-
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="../assets/dashboard/print/print.js"></script>
-<script src="../assets/dashboard/js/HoldOn.min.js"></script>
-<script src="../assets/form/js/"></script>
-
-<script>
+    <script>
         function updateDateTime() {
             var now = new Date();
             var date = now.toLocaleDateString();
@@ -113,20 +115,13 @@ if (isset($_GET['id'])) {
         updateDateTime();
         setInterval(updateDateTime, 1000);
 
-        window.addEventListener("load", function () {
-        setTimeout(function () {
-            document.getElementById("loading-overlay").style.display = "none";
-        }, 500);
-    });
-</script>
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                document.getElementById("loading-overlay").style.display = "none";
+            }, 500);
+        });
+    </script>
 
 </body>
+
 </html>
-
-
-
-
-
-
-
-

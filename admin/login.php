@@ -44,7 +44,7 @@ if (isset($_SESSION['admin_id'])) {
                 <i class="fas fa-lock"></i>
                 <input type="password" id="password" name="password" placeholder="Enter your password">
               </div>
-              <div class="text" style="text-align: center;"><a href="#" id="forgot-password-link">Forgot password?</a></div>
+              <div class="text" style="text-align: center;"><a href="#" id="forgot-password-link" style="color: #242943;">Forgot password?</a></div>
               <div class="button input-box">
                 <input type="submit" name="submit" value="Login">
               </div>

@@ -1,6 +1,6 @@
 // UPDATE VOTERS FUNCTIONALITY
-$(document).ready(function(){
-    $("#update-form").submit(function(event){
+$(document).ready(function () {
+    $("#update-form").submit(function (event) {
         event.preventDefault();
 
         var formData = new FormData(this);
@@ -11,20 +11,20 @@ $(document).ready(function(){
             data: formData,
             processData: false,
             contentType: false,
-            success: function(response){
+            success: function (response) {
                 console.log(response);
 
-                if (response.status === "success"){
+                if (response.status === "success") {
                     Swal.fire({
                         icon: "success",
-                        iconColor: '#337ab7',
+                        iconColor: '#242943',
                         title: "Voters Updated successfully",
                         toast: true,
                         position: "top-end",
                         showConfirmButton: false,
                         timer: 2000,
                     });
-                }else{
+                } else {
                     Swal.fire({
                         icon: "error",
                         title: "Not updated successfully",
@@ -35,7 +35,7 @@ $(document).ready(function(){
                     });
                 }
             },
-            error: function(errorThrown){
+            error: function (errorThrown) {
                 alert("Error: " + errorThrown);
             }
         })

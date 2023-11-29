@@ -15,35 +15,33 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html lang="en">
 <html lang="en">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
 
 
-    <title>Comelec System</title>
+<title>Comelec System</title>
 
-    <!-- Include Datepicker CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<!-- Include Datepicker CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
-    <!-- Include Datepicker JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<!-- Include Datepicker JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 
-    <link rel="shortcut icon" href="../assets/dashboard/img/comelec.png" type="image/x-icon">
-    <!-- Custom fonts for this template-->
-    <!-- {{-- <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css"> --}} -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-    <!-- Custom styles for this template-->
-    <link rel="stylesheet" href="../assets/dashboard/css/sb-admin-2.min.css">
-    <!-- Custom styles for this page -->
-    <link rel="stylesheet" href="../assets/dashboard/vendor/datatables/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
-    <link rel="stylesheet" href="../assets/dashboard/css/HoldOn.min.css">
+<link rel="shortcut icon" href="../assets/dashboard/img/comelec.png" type="image/x-icon">
+<!-- Custom fonts for this template-->
+<!-- {{-- <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css"> --}} -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<!-- Custom styles for this template-->
+<link rel="stylesheet" href="../assets/dashboard/css/sb-admin-2.min.css">
+<!-- Custom styles for this page -->
+<link rel="stylesheet" href="../assets/dashboard/vendor/datatables/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
+<link rel="stylesheet" href="../assets/dashboard/css/HoldOn.min.css">
 
 </head>
 
@@ -71,12 +69,18 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a class="nav-link" href="dashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
-                </li>
+            </li>
 
             <li class="nav-item active">
                 <a class="nav-link" href="registered_users">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Voters</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="privacy_policy">
+                    <i class="fas fa-fw fa-lock"></i>
+                    <span>Privacy Policy</span></a>
             </li>
 
 
@@ -112,15 +116,12 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"></span>
-                                <img class="img-profile rounded-circle"
-                                    src="../assets/dashboard/img/comelec.png" alt="'s Profile Picture">
+                                <img class="img-profile rounded-circle" src="../assets/dashboard/img/comelec.png" alt="'s Profile Picture">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="profile">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-success"></i>
                                     Profile
@@ -143,10 +144,10 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-800"><a href="" style="font-size: 20px; font-weight: 900; color: #337ab7
+                    <h1 class="h3 mb-2 text-gray-800"><a href="" style="font-size: 20px; font-weight: 900; color: #242943
                         ; text-decoration: none;">
-                        <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a><span style="font-size: 20px; color: grey;"> /
-                    <a type="disabled" style="font-size: 20px; font-weight: 900">Registered Voters</a></span></h1>
+                            <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a><span style="font-size: 20px; color: grey;"> /
+                            <a type="disabled" style="font-size: 20px; font-weight: 900">Registered Voters</a></span></h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -154,7 +155,7 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <h6 class="m-0 font-weight-bold text-primary" style="font-size: 30px">List of registered voters</h6>
                         </div>
                         <div style="margin-top: 20px; margin-left: 19px; display: flex; justify-content: space-between; align-items: center;">
-                        <button style="margin-right: 10px;" id="employeeModalBtn" class="d-none d-sm-inline-block btn btn-m btn-primary shadow-sm">Add Voters +</button>
+                            <button style="margin-right: 10px;" id="employeeModalBtn" class="d-none d-sm-inline-block btn btn-m btn-primary shadow-sm">Add Voters +</button>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -174,29 +175,27 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                     </thead>
 
                                     <tbody>
-                                        <?php foreach ($voter as $voters): ?>
-                                        <tr>
-                                        <td><img style="height: 50px; width: 50px; border-radius: 50px;"
-                                            src="../assets/dashboard/images/<?php echo $voters['profile_picture']; ?>"
-                                            alt="">
-                                        </td>
+                                        <?php foreach ($voter as $voters) : ?>
+                                            <tr>
+                                                <td><img style="height: 50px; width: 50px; border-radius: 50px;" src="../assets/dashboard/images/<?php echo $voters['profile_picture']; ?>" alt="">
+                                                </td>
 
-                                            <td><?php echo $voters['name']; ?></td>
-                                            <td><?php echo $voters['age']; ?></td>
-                                            <td><?php echo $voters['contact']; ?></td>
-                                            <td><?php echo date('m-d-Y', strtotime($voters['birthday'])); ?></td>
-                                            <td><?php echo $voters['address']; ?></td>
-                                            <td><?php echo $voters['occupation']; ?></td>
-                                            <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
-                                            <td>
-                                                <a href="view_registered_voters?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-eye"></i></a>
-                                                <a href="edit_registered_voters?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                <a href="#" class="delete-voter-link" data-delete-voter-id="<?php echo $voters['id']; ?>" data-toggle="modal" data-target="#deleteModal">
-                                                    <i class="fa-solid fa-trash"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
-                                        <?php endforeach;?>
+                                                <td><?php echo $voters['name']; ?></td>
+                                                <td><?php echo $voters['age']; ?></td>
+                                                <td><?php echo $voters['contact']; ?></td>
+                                                <td><?php echo date('m-d-Y', strtotime($voters['birthday'])); ?></td>
+                                                <td><?php echo $voters['address']; ?></td>
+                                                <td><?php echo $voters['occupation']; ?></td>
+                                                <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
+                                                <td>
+                                                    <a href="view_registered_voters?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="edit_registered_voters?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                    <a href="#" class="delete-voter-link" data-delete-voter-id="<?php echo $voters['id']; ?>" data-toggle="modal" data-target="#deleteModal">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        <?php endforeach; ?>
                                     </tbody>
 
                                 </table>
@@ -214,70 +213,69 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <i class="fas fa-angle-up"></i>
     </a>
 
-<!-- Modal -->
-<div id="employeeModal" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Add Voters</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form id="add-form" method="POST" action="functions/add_voters.php" enctype="multipart/form-data">
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <!-- Left Column -->
-                            <div class="form-group">
-                                <label for="profile_picture">Profile Picture</label>
-                                <input type="file" name="profile_picture" class="form-control-file" id="profile_picture" accept="image/jpeg, image/png">
-                                <img id="preview" src="#" alt="Profile Picture Preview" style="display: none; max-width: 100px; max-height: 100px;">
+    <!-- Modal -->
+    <div id="employeeModal" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Voters</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form id="add-form" method="POST" action="functions/add_voters.php" enctype="multipart/form-data">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Left Column -->
+                                <div class="form-group">
+                                    <label for="profile_picture">Profile Picture</label>
+                                    <input type="file" name="profile_picture" class="form-control-file" id="profile_picture" accept="image/jpeg, image/png">
+                                    <img id="preview" src="#" alt="Profile Picture Preview" style="display: none; max-width: 100px; max-height: 100px;">
+                                </div>
+                                <div class="form-group">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Email</label>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="age">Age</label>
+                                    <input type="number" name="age" class="form-control" id="age" placeholder="Enter Age" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="birthday">Birthday</label>
+                                    <input type="text" name="birthday" class="form-control" id="birthday" placeholder="Select Birthday" required>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="age">Age</label>
-                                <input type="number" name="age" class="form-control" id="age" placeholder="Enter Age" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="birthday">Birthday</label>
-                                <input type="text" name="birthday" class="form-control" id="birthday" placeholder="Select Birthday" required>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <!-- Right Column -->
-                            <div class="form-group">
-                                <label for="contact">Contact</label>
-                                <input type="text" name="contact" class="form-control" id="contact" placeholder="Enter Contact" required
-                                pattern="[0-9]{11}" maxlength="11">
-                            </div>
-                            <div class="form-group">
-                                <label for="occupation">Occupation</label>
-                                <input type="text" name="occupation" class="form-control" id="occupation" placeholder="Enter Occupation" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Address</label>
-                                <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address" required>
-                            </div>
+                            <div class="col-md-6">
+                                <!-- Right Column -->
+                                <div class="form-group">
+                                    <label for="contact">Contact</label>
+                                    <input type="text" name="contact" class="form-control" id="contact" placeholder="Enter Contact" required pattern="[0-9]{11}" maxlength="11">
+                                </div>
+                                <div class="form-group">
+                                    <label for="occupation">Occupation</label>
+                                    <input type="text" name="occupation" class="form-control" id="occupation" placeholder="Enter Occupation" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="address">Address</label>
+                                    <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address" required>
+                                </div>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Add Voters</button>
-                </div>
-            </form>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Add Voters</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
     <!-- Delete Modal -->
     <div id="deleteModal" class="modal fade" role="dialog">

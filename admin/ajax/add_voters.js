@@ -1,6 +1,6 @@
 // ADD VOTERS FUNCTIONALITY
-$(document).ready(function() {
-    $("#add-form").submit(function(event) {
+$(document).ready(function () {
+    $("#add-form").submit(function (event) {
         event.preventDefault();
 
         var formData = new FormData(this);
@@ -11,31 +11,31 @@ $(document).ready(function() {
             data: formData,
             processData: false,
             contentType: false,
-            success: function(response) {
+            success: function (response) {
                 console.log(response);
 
-            if (response.status === "success") {
-                HoldOn.open({
-                    theme: "sk-rect",
-                    message: "Please wait...",
-                    textColor: "#fff",
-                    element: document.body,
-                });
-                Swal.fire({
-                    icon: "success",
-                    iconColor: '#337ab7',
-                    title: "New voters added successfully",
-                    toast: true,
-                    position: "top-end",
-                    showConfirmButton: false,
-                    timer: 2000,
-                });
-                setTimeout(function () {
-                    HoldOn.close();
-                }, 2000);
-                setTimeout(function() {
-                    location.reload();
-                }, 2000);
+                if (response.status === "success") {
+                    HoldOn.open({
+                        theme: "sk-rect",
+                        message: "Please wait...",
+                        textColor: "#fff",
+                        element: document.body,
+                    });
+                    Swal.fire({
+                        icon: "success",
+                        iconColor: '#242943',
+                        title: "New voters added successfully",
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 2000,
+                    });
+                    setTimeout(function () {
+                        HoldOn.close();
+                    }, 2000);
+                    setTimeout(function () {
+                        location.reload();
+                    }, 2000);
                 } else {
                     Swal.fire({
                         icon: "error",
@@ -47,7 +47,7 @@ $(document).ready(function() {
                     });
                 }
             },
-            error: function(errorThrown) {
+            error: function (errorThrown) {
                 alert("Error: " + errorThrown);
             }
         });

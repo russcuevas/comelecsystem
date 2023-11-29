@@ -20,7 +20,7 @@ $(document).ready(function () {
                 if (response.status === 'success') {
                     Swal.fire({
                         icon: "success",
-                        iconColor: '#337ab7',
+                        iconColor: '#242943',
                         title: response.message,
                         timer: 1500,
                         toast: true,

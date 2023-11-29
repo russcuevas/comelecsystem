@@ -15,11 +15,11 @@ $(document).ready(function () {
                 if (response.status === "success") {
                     Swal.fire({
                         icon: "success",
-                        iconColor: '#337ab7',
+                        iconColor: '#242943',
                         title: "Password reset email sent successfully.",
                         showConfirmButton: true,
-                        confirmButtonColor: '#337ab7',
-                    }).then(function(){
+                        confirmButtonColor: '#242943',
+                    }).then(function () {
                         location.reload();
                     });
                 } else if (response.status === "email_not_found") {

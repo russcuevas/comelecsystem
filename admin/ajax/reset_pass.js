@@ -19,7 +19,7 @@ $(document).ready(function () {
                     if (response.status === "success") {
                         Swal.fire({
                             icon: "success",
-                            iconColor: '#337ab7',
+                            iconColor: '#242943',
                             title: "Password Reset Successful",
                             text: "You can now log in with your new password.",
                             showConfirmButton: false,
