@@ -6,6 +6,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="shortcut icon" href="assets/dashboard/img/comelec.png" type="image/x-icon">
+
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
@@ -141,19 +143,19 @@
         <section id="contact">
             <div class="inner">
                 <section>
-                    <form method="post" action="#">
+                    <form method="post" action="">
                         <div class="fields">
                             <div class="field half">
                                 <label for="name">Name</label>
-                                <input type="text" name="name" id="name" />
+                                <input type="text" name="name" id="name" required />
                             </div>
                             <div class="field half">
                                 <label for="email">Email</label>
-                                <input type="text" name="email" id="email" />
+                                <input type="text" name="email" id="email" required />
                             </div>
                             <div class="field">
                                 <label for="message">Message</label>
-                                <textarea name="message" id="message" rows="6"></textarea>
+                                <textarea name="message" id="message" rows="6" required></textarea>
                             </div>
                         </div>
                         <ul class="actions">

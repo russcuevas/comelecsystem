@@ -2,10 +2,11 @@
 <html>
 
 <head>
-    <title>Generic - Forty by HTML5 UP</title>
+    <title>Kontrabigay</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="shortcut icon" href="assets/dashboard/img/comelec.png" type="image/x-icon">
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
