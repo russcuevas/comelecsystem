@@ -55,7 +55,7 @@
                     <p style="font-style: italic;"> "Accomplish and submit application form provided in the Office of
                         the
                         Election Officer (OEO); "</p>
-                    <a href="registration.php">Click here to register</a>
+                    <a href="registration">Click here to register</a>
 
                     <hr class="major" />
 

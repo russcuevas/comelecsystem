@@ -19,7 +19,7 @@ if (isset($_POST['submit'])) {
 <html>
 
 <head>
-    <title>Tutorial - Registration</title>
+    <title>Registration</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
@@ -76,9 +76,9 @@ if (isset($_POST['submit'])) {
                         <input type="file" name="profile_picture" style="margin-bottom: 30px;">
 
                         <label for="">Name</label>
-                        <input type="text" name="name" style="width: 500px;">
+                        <input type="text" name="name" style="width: 500px; margin-bottom: 10px;">
 
-                        <label for="">Email</label>
+                        <label for="">Email <span style="color: red;">(Please enter a valid email address)</span></label>
                         <input type="email" name="email" style="width: 500px;">
 
                         <label for="">Age</label>
@@ -133,7 +133,6 @@ if (isset($_POST['submit'])) {
                 <script src="assets/js/util.js"></script>
                 <script src="assets/js/main.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-
                 <!-- <script>
                     flatpickr("#birthday", {
                         dateFormat: "Y-m-d",

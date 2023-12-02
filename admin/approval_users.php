@@ -332,22 +332,38 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script>
         $(document).ready(function() {
             $(".approve-btn").on("click", function() {
-                // Get the voter ID from the data attribute
                 var voterId = $(this).data("voter-id");
 
-                // Send AJAX request to update the status
+                HoldOn.open({
+                    theme: 'sk-rect',
+                    message: 'Please wait...'
+                });
+
                 $.ajax({
                     type: "POST",
-                    url: "functions/update_status.php", // Replace with the actual PHP file handling the update
+                    url: "functions/update_status.php",
                     data: {
                         voterId: voterId,
                         status: "Approve"
                     },
                     success: function(response) {
-                        // Handle the response (if needed)
                         console.log(response);
 
-                        // You can also update the UI here if necessary
+                        if (response.status === "success") {
+                            HoldOn.close();
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success!',
+                                text: response.message,
+                                timer: 2000,
+                                showConfirmButton: false
+                            });
+                            setTimeout(function() {
+                                location.reload();
+                            }, 2000);
+                        } else {
+                            console.error("Error updating status: ", response.error);
+                        }
                     },
                     error: function(error) {
                         console.error("Error updating status: ", error);
@@ -356,6 +372,8 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
             });
         });
     </script>
+
+
 </body>
 
 </html>
