@@ -57,7 +57,7 @@ if (isset($_POST['submit'])) {
                 <li><a href="index">Home</a></li>
                 <li><a href="about">About</a></li>
                 <!-- <li><a href="generic">Generic</a></li> -->
-                <li><a href="tutorial-registration">Tutorial registration</a></li>
+                <li><a href="tutorial-registration">Registration</a></li>
             </ul>
             <ul class="actions stacked">
             </ul>
