@@ -176,6 +176,7 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                             <th>Address</th>
                                             <th>Occupation</th>
                                             <th>Date Registered</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -193,6 +194,7 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <td><?php echo $voters['address']; ?></td>
                                                 <td><?php echo $voters['occupation']; ?></td>
                                                 <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
+                                                <td><?php echo $voters['status']; ?>✔️</td>
                                                 <td>
                                                     <a href="view_registered_voters?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-eye"></i></a>
                                                     <a href="edit_registered_voters?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>

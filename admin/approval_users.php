@@ -183,24 +183,25 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                                     <tbody>
                                         <?php foreach ($voter as $voters) : ?>
-                                            <tr>
-                                                <td><img style="height: 50px; width: 50px; border-radius: 50px;" src="../assets/dashboard/images/<?php echo $voters['profile_picture']; ?>" alt="">
-                                                </td>
-
-                                                <td><?php echo $voters['name']; ?></td>
-                                                <td><?php echo $voters['age']; ?></td>
-                                                <td><?php echo $voters['contact']; ?></td>
-                                                <td><?php echo date('m-d-Y', strtotime($voters['birthday'])); ?></td>
-                                                <td><?php echo $voters['address']; ?></td>
-                                                <td><?php echo $voters['occupation']; ?></td>
-                                                <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
-                                                <td><?php echo $voters['status']; ?></td>
-                                                <td>
-                                                    <button class="btn btn-success">Approve</button>
-                                                    <button class="btn btn-danger">Cancel</button>
-                                                </td>
-                                            </tr>
+                                            <?php if ($voters['status'] == 'For approval') : ?>
+                                                <tr>
+                                                    <td><img style="height: 50px; width: 50px; border-radius: 50px;" src="../assets/dashboard/images/<?php echo $voters['profile_picture']; ?>" alt=""></td>
+                                                    <td><?php echo $voters['name']; ?></td>
+                                                    <td><?php echo $voters['age']; ?></td>
+                                                    <td><?php echo $voters['contact']; ?></td>
+                                                    <td><?php echo date('m-d-Y', strtotime($voters['birthday'])); ?></td>
+                                                    <td><?php echo $voters['address']; ?></td>
+                                                    <td><?php echo $voters['occupation']; ?></td>
+                                                    <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
+                                                    <td><?php echo $voters['status']; ?>🕥</td>
+                                                    <td>
+                                                        <button class="btn btn-success approve-btn" data-voter-id="<?php echo $voters['id']; ?>">Approve</button>
+                                                        <button class="btn btn-danger">Cancel</button>
+                                                    </td>
+                                                </tr>
+                                            <?php endif; ?>
                                         <?php endforeach; ?>
+
                                     </tbody>
 
                                 </table>
@@ -328,6 +329,33 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="ajax/add_voters.js"></script>
     <script src="ajax/delete_voter.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".approve-btn").on("click", function() {
+                // Get the voter ID from the data attribute
+                var voterId = $(this).data("voter-id");
+
+                // Send AJAX request to update the status
+                $.ajax({
+                    type: "POST",
+                    url: "functions/update_status.php", // Replace with the actual PHP file handling the update
+                    data: {
+                        voterId: voterId,
+                        status: "Approve"
+                    },
+                    success: function(response) {
+                        // Handle the response (if needed)
+                        console.log(response);
+
+                        // You can also update the UI here if necessary
+                    },
+                    error: function(error) {
+                        console.error("Error updating status: ", error);
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
