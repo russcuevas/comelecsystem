@@ -88,6 +88,18 @@ if (isset($_GET['id'])) {
                     <span>Voters</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="approval_users">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Approval</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="privacy_policy">
+                    <i class="fas fa-fw fa-lock"></i>
+                    <span>Privacy Policy</span></a>
+            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

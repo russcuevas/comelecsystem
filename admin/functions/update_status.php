@@ -131,7 +131,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             try {
                 $mail->send();
                 $response['status'] = 'success';
-                $response['message'] = 'Update status successfully';
+                $response['message'] = 'Approve voters registration';
             } catch (Exception $e) {
                 $response['status'] = 'error';
                 $response['message'] = 'Error sending email: ' . $mail->ErrorInfo;

@@ -1,25 +1,7 @@
 <?php
-include './database/connection.php';
-
-if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $age = $_POST['age'];
-    $birthday = $_POST['birthday'];
-    $contact = $_POST['contact'];
-    $occupation = $_POST['occupation'];
-    $address = $_POST['address'];
-
-    $profile_picture = $_FILES['profile_picture']['name'];
-    $profile_size = $_FILES['profile_picture']['size'];
-    $profile_tmp_name = $_FILES['profile_picture']['tmp_name'];
-    $profile_folder = 'assets/dashboard/images/' . $profile_picture;
-
-    $stmt = $conn->prepare('INSERT INTO `tbl_voters` (name, email, age, birthday, contact, occupation, address, profile_picture) VALUES (?,?,?,?,?,?,?,?)');
-    $stmt->execute([$name, $email, $age, $birthday, $contact, $occupation, $address, $profile_picture]);
-    echo '<script>window.alert ("Registration success");</script>';
-}
+include 'database/connection.php';
 ?>
+
 <!DOCTYPE HTML>
 <html>
 
@@ -30,6 +12,9 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="shortcut icon" href="assets/dashboard/img/comelec.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="assets/form/js/sweetalert2/dist/sweetalert2.css">
+
+
 
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css" />
@@ -76,32 +61,32 @@ if (isset($_POST['submit'])) {
 
                     <!-- Content -->
                     <h2 id="content"></h2>
-                    <form action="" method="POST" enctype="multipart/form-data">
+                    <form id="registrationForm" class="registrationForm" action="functions/registration.php" method="POST" enctype="multipart/form-data">
                         <label for="">Picture</label>
                         <input type="file" name="profile_picture" class="form-control-file" id="profile_picture" accept="image/jpeg, image/png">
                         <img id="preview" src="#" alt="Profile Picture Preview" style="display: none; max-width: 200px; max-height: 200px; margin-bottom: 10px">
 
 
                         <label for="">Name</label>
-                        <input type="text" name="name" style="width: 500px; margin-bottom: 10px;">
+                        <input type="text" name="name" style="width: 500px; margin-bottom: 10px;" required>
 
                         <label for="">Email <span style="color: red;">(Please enter a valid email address)</span></label>
-                        <input type="email" name="email" style="width: 500px;">
+                        <input type="email" name="email" style="width: 500px;" required>
 
                         <label for="">Age</label>
-                        <input type="text" name="age" style="width: 500px;">
+                        <input type="text" name="age" style="width: 500px;" required>
 
                         <label for="">Birthday</label>
-                        <input type="date" name="birthday" style="width: 500px; color: black;">
+                        <input type="date" name="birthday" style="width: 500px; color: black;" required>
 
                         <label for="">Contact</label>
-                        <input type="text" name="contact" style="width: 500px;">
+                        <input type="text" name="contact" style="width: 500px;" required>
 
                         <label for="">Occupation</label>
-                        <input type="text" name="occupation" style="width: 500px;">
+                        <input type="text" name="occupation" style="width: 500px;" required>
 
                         <label for="">Address</label>
-                        <input type="text" name="address" style="width: 500px;">
+                        <input type="text" name="address" style="width: 500px;" required>
 
                         <input type="submit" name="submit" style="margin-top: 5px;">
                     </form>
@@ -139,7 +124,50 @@ if (isset($_POST['submit'])) {
                 <script src="assets/js/breakpoints.min.js"></script>
                 <script src="assets/js/util.js"></script>
                 <script src="assets/js/main.js"></script>
+                <script src="assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+                <script>
+                    $(document).ready(function() {
+                        $('.registrationForm').submit(function(e) {
+                            e.preventDefault();
+
+                            var formData = new FormData(this);
+
+                            $.ajax({
+                                url: 'functions/registration.php',
+                                type: 'POST',
+                                data: formData,
+                                processData: false,
+                                contentType: false,
+                                success: function(response) {
+                                    console.log(response);
+                                    if (response.status === 'success') {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Success',
+                                            text: response.message,
+                                            timer: 2000,
+                                            showConfirmButton: false
+                                        });
+                                        setTimeout(function() {
+                                            location.reload();
+                                        }, 2000);
+                                    } else if (response.status === 'error') {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Error',
+                                            text: response.message,
+                                            showConfirmButton: false,
+                                        });
+                                    };
+                                },
+                                error: function(xhr, status, error) {
+                                    console.error(xhr.responseText);
+                                }
+                            });
+                        });
+                    });
+                </script>
                 <script>
                     document
                         .getElementById("profile_picture")

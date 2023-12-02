@@ -78,7 +78,7 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </li>
 
             <li class="nav-item active">
-                <a class="nav-link" href="registered_users">
+                <a class="nav-link" href="approval_users">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Approval</span></a>
             </li>
