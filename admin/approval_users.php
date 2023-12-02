@@ -194,10 +194,11 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                     <td><?php echo $voters['occupation']; ?></td>
                                                     <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
                                                     <td><?php echo $voters['status']; ?>🕥</td>
-                                                    <td>
+                                                    <td style="display: flex; gap: 5px;">
                                                         <button class="btn btn-success approve-btn" data-voter-id="<?php echo $voters['id']; ?>">Approve</button>
-                                                        <button class="btn btn-danger">Cancel</button>
+                                                        <!-- <button class="btn btn-danger cancel-btn">Cancel</button> -->
                                                     </td>
+
                                                 </tr>
                                             <?php endif; ?>
                                         <?php endforeach; ?>

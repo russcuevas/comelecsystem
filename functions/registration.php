@@ -12,6 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $occupation = $_POST['occupation'];
     $address = $_POST['address'];
 
+    $profile_picture = $_FILES['profile_picture']['name'];
+    $profile_size = $_FILES['profile_picture']['size'];
+    $profile_tmp_name = $_FILES['profile_picture']['tmp_name'];
+    $profile_folder = '../assets/dashboard/images/' . $profile_picture;
+
     $check_existing = $conn->prepare("SELECT COUNT(*) FROM `tbl_voters` WHERE email = ?");
     $check_existing->execute([$email]);
     $email_count = $check_existing->fetchColumn();
@@ -20,16 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $response['status'] = 'error';
         $response['message'] = 'Email already exists. Please try a new one.';
     } else {
-        $profile_picture = $_FILES['profile_picture']['name'];
-        $profile_size = $_FILES['profile_picture']['size'];
-        $profile_tmp_name = $_FILES['profile_picture']['tmp_name'];
-        $profile_folder = 'assets/dashboard/images/' . $profile_picture;
+        move_uploaded_file($profile_tmp_name, $profile_folder);
 
         $stmt = $conn->prepare('INSERT INTO `tbl_voters` (name, email, age, birthday, contact, occupation, address, profile_picture) VALUES (?,?,?,?,?,?,?,?)');
         $stmt->execute([$name, $email, $age, $birthday, $contact, $occupation, $address, $profile_picture]);
 
         $response['status'] = 'success';
-        $response['message'] = 'Registration successful';
+        $response['message'] = 'Registered successfully, check always your email wait for the approval of the administrator';
     }
 }
 
