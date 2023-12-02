@@ -7,7 +7,7 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
-$fetch = "SELECT * FROM `tbl_voters` WHERE status = 'Approve'";
+$fetch = "SELECT * FROM `tbl_voters`";
 $stmt = $conn->query($fetch);
 $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -71,14 +71,14 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <span>Dashboard</span></a>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="registered_users">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Voters</span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="approval_users">
+            <li class="nav-item active">
+                <a class="nav-link" href="registered_users">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Approval</span></a>
             </li>
@@ -153,29 +153,30 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <h1 class="h3 mb-2 text-gray-800"><a href="" style="font-size: 20px; font-weight: 900; color: #242943
                         ; text-decoration: none;">
                             <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a><span style="font-size: 20px; color: grey;"> /
-                            <a type="disabled" style="font-size: 20px; font-weight: 900">Registered Voters</a></span></h1>
+                            <a type="disabled" style="font-size: 20px; font-weight: 900">Approval</a></span></h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary" style="font-size: 30px">List of registered voters</h6>
+                            <h6 class="m-0 font-weight-bold text-primary" style="font-size: 30px">Approval</h6>
                         </div>
-                        <div style="margin-top: 20px; margin-left: 19px; display: flex; justify-content: space-between; align-items: center;">
+                        <!-- <div style="margin-top: 20px; margin-left: 19px; display: flex; justify-content: space-between; align-items: center;">
                             <button style="margin-right: 10px;" id="employeeModalBtn" class="d-none d-sm-inline-block btn btn-m btn-primary shadow-sm">Add Voters +</button>
-                        </div>
+                        </div> -->
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>Image</th>
-                                            <th>Full name</th>
+                                            <th>Name</th>
                                             <th>Age</th>
                                             <th>Contact</th>
                                             <th>Birthday</th>
                                             <th>Address</th>
                                             <th>Occupation</th>
-                                            <th>Date Registered</th>
+                                            <th>Date</th>
+                                            <th>Status</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
@@ -193,12 +194,10 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                                 <td><?php echo $voters['address']; ?></td>
                                                 <td><?php echo $voters['occupation']; ?></td>
                                                 <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
+                                                <td><?php echo $voters['status']; ?></td>
                                                 <td>
-                                                    <a href="view_registered_voters?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-eye"></i></a>
-                                                    <a href="edit_registered_voters?id=<?php echo $voters['id'] ?>"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                    <a href="#" class="delete-voter-link" data-delete-voter-id="<?php echo $voters['id']; ?>" data-toggle="modal" data-target="#deleteModal">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </a>
+                                                    <button class="btn btn-success">Approve</button>
+                                                    <button class="btn btn-danger">Cancel</button>
                                                 </td>
                                             </tr>
                                         <?php endforeach; ?>

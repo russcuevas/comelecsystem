@@ -8,7 +8,7 @@ if (!isset($_SESSION['admin_id'])) {
 }
 
 // GET THE TOTAL NUMBER OF REGISTERED VOTERS
-$stmt = $conn->query("SELECT COUNT(*) FROM `tbl_voters`");
+$stmt = $conn->query("SELECT COUNT(*) FROM `tbl_voters` WHERE status = 'Approve'");
 $totalVoters = $stmt->fetchColumn();
 
 ?>
@@ -66,6 +66,12 @@ $totalVoters = $stmt->fetchColumn();
                 <a class="nav-link" href="registered_users">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Voters</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="approval_users">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Approval</span></a>
             </li>
 
             <li class="nav-item">
