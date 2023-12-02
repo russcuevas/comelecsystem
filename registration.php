@@ -10,8 +10,13 @@ if (isset($_POST['submit'])) {
     $occupation = $_POST['occupation'];
     $address = $_POST['address'];
 
-    $stmt = $conn->prepare('INSERT INTO `tbl_voters` (name, email, age, birthday, contact, occupation, address) VALUES (?,?,?,?,?,?,?)');
-    $stmt->execute([$name, $email, $age, $birthday, $contact, $occupation, $address]);
+    $profile_picture = $_FILES['profile_picture']['name'];
+    $profile_size = $_FILES['profile_picture']['size'];
+    $profile_tmp_name = $_FILES['profile_picture']['tmp_name'];
+    $profile_folder = 'assets/dashboard/images/' . $profile_picture;
+
+    $stmt = $conn->prepare('INSERT INTO `tbl_voters` (name, email, age, birthday, contact, occupation, address, profile_picture) VALUES (?,?,?,?,?,?,?,?)');
+    $stmt->execute([$name, $email, $age, $birthday, $contact, $occupation, $address, $profile_picture]);
     echo '<script>window.alert ("Registration success");</script>';
 }
 ?>
@@ -72,8 +77,10 @@ if (isset($_POST['submit'])) {
                     <!-- Content -->
                     <h2 id="content"></h2>
                     <form action="" method="POST" enctype="multipart/form-data">
-                        <label for="">Profile picture</label>
-                        <input type="file" name="profile_picture" style="margin-bottom: 30px;">
+                        <label for="">Picture</label>
+                        <input type="file" name="profile_picture" class="form-control-file" id="profile_picture" accept="image/jpeg, image/png">
+                        <img id="preview" src="#" alt="Profile Picture Preview" style="display: none; max-width: 200px; max-height: 200px; margin-bottom: 10px">
+
 
                         <label for="">Name</label>
                         <input type="text" name="name" style="width: 500px; margin-bottom: 10px;">
@@ -133,11 +140,23 @@ if (isset($_POST['submit'])) {
                 <script src="assets/js/util.js"></script>
                 <script src="assets/js/main.js"></script>
                 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-                <!-- <script>
-                    flatpickr("#birthday", {
-                        dateFormat: "Y-m-d",
-                    });
-                </script> -->
+                <script>
+                    document
+                        .getElementById("profile_picture")
+                        .addEventListener("change", function() {
+                            const fileInput = this;
+                            const previewImage = document.getElementById("preview");
+
+                            if (fileInput.files && fileInput.files[0]) {
+                                const reader = new FileReader();
+                                reader.onload = function(e) {
+                                    previewImage.src = e.target.result;
+                                    previewImage.style.display = "block";
+                                };
+                                reader.readAsDataURL(fileInput.files[0]);
+                            }
+                        });
+                </script>
 
 </body>
 
