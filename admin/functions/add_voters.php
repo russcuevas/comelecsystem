@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contact = $_POST['contact'];
     $address = $_POST['address'];
     $occupation = $_POST['occupation'];
+    $status = 'Approve';
 
     $profile_picture = $_FILES['profile_picture']['name'];
     $profile_size = $_FILES['profile_picture']['size'];
@@ -24,9 +25,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         date_default_timezone_set('Asia/Manila');
         $date_registered = date('Y-m-d H:i:s');
-
-        $stmt = $conn->prepare("INSERT INTO `tbl_voters` (name, email, age, birthday, contact, address, occupation, profile_picture, date_registered) VALUES (?,?,?,?,?,?,?,?,?)");
-        $stmt->execute([$name, $email, $age, $birthday, $contact, $address, $occupation, $profile_picture, $date_registered]);
+        $stmt = $conn->prepare("INSERT INTO `tbl_voters` (name, email, age, birthday, contact, address, occupation, profile_picture, status, date_registered) VALUES (?,?,?,?,?,?,?,?,?,?)");
+        $stmt->execute([$name, $email, $age, $birthday, $contact, $address, $occupation, $profile_picture, $status, $date_registered]);
         $response['status'] = 'success';
     }
 } else {
