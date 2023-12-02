@@ -1,6 +1,7 @@
         body {
             font-family: Arial, sans-serif;
         }
+
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -8,39 +9,47 @@
             border: 1px solid #ccc;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             margin-bottom: 20px;
         }
+
         .underline {
             text-decoration: underline;
         }
+
         .bold {
             font-weight: bold;
         }
+
         .logo {
             max-width: 100px;
         }
+
         .header {
             font-weight: bold;
         }
+
         .title-container {
             margin-left: 20px;
         }
-                .footer {
+
+        .footer {
             margin-top: 20px;
             font-size: 14px;
             color: #888;
         }
+
         .voter-info {
             margin-left: 20px;
             padding: 20px;
         }
 
-        .voter-regis{
+        .voter-regis {
             margin-left: 20px;
             padding: 20px;
         }
-        
+
         #loading-overlay {
             position: fixed;
             top: 0;

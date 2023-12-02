@@ -43,17 +43,90 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $mail->isHTML(true);
             $mail->Subject = 'Voter Registration Approval';
             $mail->Body = '
-                    <p>Congratulations!</p>
-                    <p>Your voter registration has been approved. Below are your details:</p>
-                    <ul>
-                        <li><strong>Name:</strong> ' . $voters['name'] . '</li>
-                        <li><strong>Age:</strong> ' . $voters['age'] . '</li>
-                        <li><strong>Contact:</strong> ' . $voters['contact'] . '</li>
-                        <li><strong>Address:</strong> ' . $voters['address'] . '</li>
-                        <li><strong>Occupation:</strong> ' . $voters['occupation'] . '</li>
-                    </ul>
-                    <p>You can now get your voters certificate by visiting the Municipality.</p>
-                ';
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #ffffff;
+            }
+            
+            .header {
+                background-color: #242943;
+                color: #ffffff;
+                padding: 10px;
+                text-align: center;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .content p {
+                margin-bottom: 15px;
+            }
+            
+            .content ul {
+                list-style-type: none;
+                padding: 0;
+            }
+            
+            .content li {
+                margin-bottom: 10px;
+            }
+            
+            .button {
+                display: inline-block;
+                margin-top: 20px;
+                background-color: #242943;
+                color: #ffffff;
+                padding: 10px 20px;
+                text-decoration: none;
+                border-radius: 4px;
+            }
+
+            .footer {
+                margin-top: 20px;
+                font-size: 12px;
+                color: #808080;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <img style="height: 100px; width: 100px;" src="https://wowjohn.com/wp-content/uploads/2022/05/comelec-logo-png-6-Transparent-Images-600x600.png" alt="Comelec Logo">
+                <h1>Congratulations!</h1>
+            </div>
+            <div class="content">
+                <p>Your voter registration has been approved. Below are your details:</p>
+                <ul>
+                    <li><strong>Name:</strong> ' . $voters['name'] . '</li>
+                    <li><strong>Age:</strong> ' . $voters['age'] . '</li>
+                    <li><strong>Contact:</strong> ' . $voters['contact'] . '</li>
+                    <li><strong>Address:</strong> ' . $voters['address'] . '</li>
+                    <li><strong>Occupation:</strong> ' . $voters['occupation'] . '</li>
+                </ul>
+                <p>You can now get your voters certificate by visiting the Municipality.</p>
+            </div>
+            <div class="footer">
+                <p>Thank you for choosing us!</p>
+            </div>
+        </div>
+    </body>
+    </html>
+';
+
 
             try {
                 $mail->send();

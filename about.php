@@ -88,7 +88,7 @@
                             <header class="major">
                                 <h3>Offered registration</h3>
                             </header>
-                            <p>We offer tutorial registration in our system.</p>
+                            <p>We offer online registration in our system.</p>
                             <ul class="actions">
                                 <li><a href="tutorial-registration" class="button">Click here</a></li>
                             </ul>
