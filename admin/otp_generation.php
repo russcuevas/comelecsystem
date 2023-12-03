@@ -1,6 +1,12 @@
 <?php
 include '../database/connection.php';
 require 'vendor/autoload.php';
+
+session_start();
+if (isset($_SESSION['admin_id'])) {
+    header('location: dashboard');
+}
+
 ?>
 
 <!DOCTYPE html>
