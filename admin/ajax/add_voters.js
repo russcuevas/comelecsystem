@@ -21,21 +21,25 @@ $(document).ready(function () {
                         textColor: "#fff",
                         element: document.body,
                     });
-                    Swal.fire({
-                        icon: "success",
-                        iconColor: '#242943',
-                        title: "New voters added successfully",
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 2000,
-                    });
+
                     setTimeout(function () {
                         HoldOn.close();
-                    }, 2000);
-                    setTimeout(function () {
-                        location.reload();
-                    }, 2000);
+
+                        Swal.fire({
+                            icon: "success",
+                            iconColor: '#242943',
+                            title: "New voters added successfully",
+                            toast: true,
+                            position: "top-end",
+                            showConfirmButton: false,
+                            timer: 2000,
+                        }).then(function () {
+                            $("#employeeModal").modal("hide");
+                            setTimeout(function () {
+                                location.reload();
+                            }, 500);
+                        });
+                    }, 1000);
                 } else {
                     Swal.fire({
                         icon: "error",
