@@ -1,86 +1,56 @@
 <?php
 include '../database/connection.php';
 require 'vendor/autoload.php';
-
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\Exception;
-
-// if ($_SERVER["REQUEST_METHOD"] == "POST") {
-//     $email = $_POST["email"];
-
-//     $stmt = $conn->prepare("SELECT * FROM `tbl_admin` WHERE email = :email");
-//     $stmt->bindParam(":email", $email);
-//     $stmt->execute();
-//     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-//     if ($user) {
-//         $otp = mt_rand(100000, 999999);
-
-//         $mail = new PHPMailer(true);
-
-//         try {
-//             $mail->isSMTP();
-//             $mail->SMTPDebug = 0;
-//             $mail->SMTPAuth = true;
-//             $mail->SMTPSecure = 'tls';
-//             $mail->SMTPOptions = array(
-//                 'ssl' => array(
-//                     'verify_peer' => false,
-//                     'verify_peer_name' => false,
-//                     'allow_self_signed' => true
-//                 )
-//             );
-//             $mail->Host = 'smtp.gmail.com';
-//             $mail->Port = 587;
-//             $mail->Username = 'russelarchiefoodorder@gmail.com';
-//             $mail->Password = 'cjwitldatrerscln';
-
-//             $mail->setFrom('your_email@example.com', 'Your Name');
-//             $mail->addAddress($email);
-
-//             $mail->isHTML(true);
-//             $mail->Subject = 'OTP for Verification';
-//             $mail->Body    = 'Your OTP is: ' . $otp;
-
-//             $mail->send();
-
-//             $stmt = $conn->prepare("UPDATE `tbl_admin` SET otp = :otp, otp_expiration = NOW() + INTERVAL 5 MINUTE WHERE id = :id");
-//             $stmt->bindParam(":otp", $otp);
-//             $stmt->bindParam(":id", $user["id"]);
-//             $stmt->execute();
-
-//             echo 'OTP sent successfully. Proceed to OTP verification.';
-//         } catch (Exception $e) {
-//             echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-//         }
-//     } else {
-//         echo "Invalid email.";
-//     }
-// }
-
-
 ?>
 
-<!-- otp_verification.php -->
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../assets/form/css/otp.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="../assets/dashboard/css/HoldOn.min.css">
+    <link rel="stylesheet" href="../assets/form/js/sweetalert2/dist/sweetalert2.css">
     <title>OTP Verification</title>
 </head>
 
 <body>
-    <form action="otp_verification.php" method="post">
-        <label>Email:</label>
-        <input type="text" name="email" placeholder="Enter your email" required>
-        <br>
-        <label>OTP:</label>
-        <input type="text" name="otp" placeholder="Enter OTP" required>
-        <br>
-        <input type="submit" name="submit" value="Verify OTP">
-    </form>
+
+    <div class="container">
+        <input type="checkbox" id="flip">
+        <div class="cover">
+            <div class="front">
+                <img src="../assets/dashboard/img/comelec.png" alt="">
+            </div>
+        </div>
+        <div class="forms">
+            <div class="form-content">
+                <div class="login-form">
+                    <div class="title">OTP Verification</div>
+                    <form id="otp-form" action="otp_verification.php" method="POST">
+                        <div class="input-boxes">
+                            <div class="input-box">
+                                <i class="fas fa-envelope"></i>
+                                <input type="text" id="email" name="email" placeholder="Re-enter your email">
+                            </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input type="text" id="otp" name="otp" placeholder="Enter OTP">
+                            </div>
+                            <div class="button input-box">
+                                <input type="submit" name="submit" value="Verify OTP">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="../assets/dashboard/js/HoldOn.min.js"></script>
+        <script src="ajax/otp_verification.js"></script>
 </body>
 
 </html>

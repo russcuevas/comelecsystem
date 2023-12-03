@@ -1,6 +1,8 @@
 <?php
 include '../database/connection.php';
 
+$response = array();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["email"];
     $submittedOTP = $_POST["otp"];
@@ -18,12 +20,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             session_start();
             $_SESSION['admin_id'] = $user['id'];
-            header("Location: dashboard.php");
-            exit();
+            $_SESSION['login_success'] = true;
+            $response['status'] = 'success';
         } else {
-            echo "Invalid OTP. Please try again.";
+            $response['status'] = 'error';
+            $response['message'] = 'Invalid OTP request new one';
         }
     } else {
-        echo "Invalid email.";
+        $response['status'] = 'error';
+        $response['message'] = 'Invalid email';
     }
 }
+
+header('Content-Type: application/json');
+echo json_encode($response);

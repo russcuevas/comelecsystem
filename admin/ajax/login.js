@@ -7,11 +7,8 @@ $(document).ready(function () {
         if ($('input[name="email"]').val() === '' || $('input[name="password"]').val() === '') {
             Swal.fire({
                 icon: "warning",
-                title: "Please fill up all fields",
-                toast: true,
-                position: "top-end",
-                showConfirmButton: false,
-                timer: 2000,
+                title: "Warning",
+                text: 'Please fill up all fields'
             });
             return;
         }
