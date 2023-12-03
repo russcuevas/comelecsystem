@@ -9,7 +9,7 @@ $(document).ready(function () {
                 icon: "warning",
                 title: "Please fill up all fields",
                 toast: true,
-                position: "top-end", 
+                position: "top-end",
                 showConfirmButton: false,
                 timer: 2000,
             });
@@ -20,29 +20,43 @@ $(document).ready(function () {
             type: "POST",
             url: "functions/login.php",
             data: formData,
+            beforeSend: function () {
+                HoldOn.open({
+                    theme: 'sk-rect',
+                    message: 'Please wait...'
+                });
+            },
             success: function (response) {
                 console.log(response);
 
                 if (response.status === "success") {
-                    HoldOn.open({
-                        theme: 'sk-rect',
-                        message: 'Please wait...'
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message,
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            window.location.href = 'otp_generation';
+                        }
                     });
-
-                    setTimeout(function () {
-                        HoldOn.close();
-                        window.location.href = 'dashboard.php';
-                    }, 1000);
                 } else {
                     Swal.fire({
                         icon: "error",
-                        title: "Incorrect email / password",
-                        toast: true,
-                        position: "top-end",
-                        showConfirmButton: false,
-                        timer: 2000,
+                        title: "Error",
+                        text: response.message,
                     });
                 }
+            },
+            error: function (xhr, status, error) {
+                console.error(xhr.responseText);
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: "An error occurred during the request.",
+                });
+            },
+            complete: function () {
+                HoldOn.close();
             },
         });
     });
