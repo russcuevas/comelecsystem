@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 02, 2023 at 04:49 PM
+-- Generation Time: Dec 03, 2023 at 07:52 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -30,15 +30,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbl_admin` (
   `id` int(11) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `otp` varchar(6) NOT NULL,
+  `otp_expiration` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`id`, `email`, `password`) VALUES
-(1, 'russelcuevas0@gmail.com', 'f7c3bc1d808e04732adf679965ccc34ca7ae3441');
+INSERT INTO `tbl_admin` (`id`, `email`, `password`, `otp`, `otp_expiration`) VALUES
+(1, 'russelcuevas0@gmail.com', 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', '', '2023-12-03 06:23:00');
 
 -- --------------------------------------------------------
 
@@ -111,13 +113,13 @@ ALTER TABLE `tbl_admin`
 -- AUTO_INCREMENT for table `tbl_forgotpassword`
 --
 ALTER TABLE `tbl_forgotpassword`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=97;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=98;
 
 --
 -- AUTO_INCREMENT for table `tbl_voters`
 --
 ALTER TABLE `tbl_voters`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=71;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- Constraints for dumped tables
