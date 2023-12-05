@@ -84,7 +84,7 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="message.php">
+                <a class="nav-link" href="message">
                     <i class="fas fa-fw fa-comment"></i>
                     <span>Message</span></a>
             </li>

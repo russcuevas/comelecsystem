@@ -87,14 +87,14 @@ function truncateMessage($message, $length)
                     <span>Voters</span></a>
             </li>
 
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="approval_users">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Approval</span></a>
             </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="message.php">
+            <li class="nav-item active">
+                <a class="nav-link" href="message">
                     <i class="fas fa-fw fa-comment"></i>
                     <span>Message</span></a>
             </li>
