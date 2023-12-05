@@ -7,9 +7,19 @@ if (!isset($_SESSION['admin_id'])) {
     exit();
 }
 
-$fetch = "SELECT * FROM `tbl_voters`";
+$fetch = "SELECT * FROM `tbl_inquiry`";
 $stmt = $conn->query($fetch);
-$voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$message = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+// CONVERTING MESSAGE IF IT IS LONG
+function truncateMessage($message, $length)
+{
+    if (strlen($message) > $length) {
+        return substr($message, 0, $length) . '...';
+    }
+    return $message;
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -159,12 +169,12 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <h1 class="h3 mb-2 text-gray-800"><a href="" style="font-size: 20px; font-weight: 900; color: #242943
                         ; text-decoration: none;">
                             <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard</a><span style="font-size: 20px; color: grey;"> /
-                            <a type="disabled" style="font-size: 20px; font-weight: 900">Approval</a></span></h1>
+                            <a type="disabled" style="font-size: 20px; font-weight: 900">Message</a></span></h1>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary" style="font-size: 30px">Approval</h6>
+                            <h6 class="m-0 font-weight-bold text-primary" style="font-size: 30px">Message</h6>
                         </div>
                         <!-- <div style="margin-top: 20px; margin-left: 19px; display: flex; justify-content: space-between; align-items: center;">
                             <button style="margin-right: 10px;" id="employeeModalBtn" class="d-none d-sm-inline-block btn btn-m btn-primary shadow-sm">Add Voters +</button>
@@ -174,43 +184,31 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>Image</th>
+                                            <th>Message No.</th>
                                             <th>Name</th>
-                                            <th>Age</th>
-                                            <th>Contact</th>
-                                            <th>Birthday</th>
-                                            <th>Address</th>
-                                            <th>Occupation</th>
-                                            <th>Date</th>
-                                            <th>Status</th>
+                                            <th>Email</th>
+                                            <th>Message</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
 
                                     <tbody>
-                                        <?php foreach ($voter as $voters) : ?>
-                                            <?php if ($voters['status'] == 'For approval') : ?>
-                                                <tr>
-                                                    <td><img style="height: 50px; width: 50px; border-radius: 50px;" src="../assets/dashboard/images/<?php echo $voters['profile_picture']; ?>" alt=""></td>
-                                                    <td><?php echo $voters['name']; ?></td>
-                                                    <td><?php echo $voters['age']; ?></td>
-                                                    <td><?php echo $voters['contact']; ?></td>
-                                                    <td><?php echo date('m-d-Y', strtotime($voters['birthday'])); ?></td>
-                                                    <td><?php echo $voters['address']; ?></td>
-                                                    <td><?php echo $voters['occupation']; ?></td>
-                                                    <td><?php echo date('m-d-Y h:i:A', strtotime($voters['date_registered'])); ?></td>
-                                                    <td><?php echo $voters['status']; ?>🕥</td>
-                                                    <td style="display: flex; gap: 5px;">
-                                                        <button class="btn btn-success approve-btn" data-voter-id="<?php echo $voters['id']; ?>">Approve</button>
-                                                        <!-- <button class="btn btn-danger cancel-btn">Cancel</button> -->
-                                                    </td>
-
-                                                </tr>
-                                            <?php endif; ?>
+                                        <?php $messageNo = 1 ?>
+                                        <?php foreach ($message as $messages) : ?>
+                                            <tr>
+                                                <td><?php echo $messageNo++; ?></td>
+                                                <td><?php echo $messages['name']; ?></td>
+                                                <td><?php echo $messages['email']; ?></td>
+                                                <td><?php echo truncateMessage($messages['message'], 6); ?></td>
+                                                <td>
+                                                    <a href="#" class="viewBtn" data-toggle="modal" data-target="#messageModal" data-id="<?php echo $messages['id']; ?>" data-name="<?php echo $messages['name']; ?>" data-email="<?php echo $messages['email']; ?>" data-message="<?php echo $messages['message']; ?>"><i class="fa-solid fa-eye"></i></a>
+                                                    <a href="#" class="delete-message" data-delete-message-id="<?php echo $messages['id']; ?>" data-toggle="modal" data-target="#deleteModal">
+                                                        <i class="fa-solid fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                         <?php endforeach; ?>
-
                                     </tbody>
-
                                 </table>
                             </div>
                         </div>
@@ -226,66 +224,20 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <i class="fas fa-angle-up"></i>
     </a>
 
-    <!-- Modal -->
-    <div id="employeeModal" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-lg" role="document">
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add Voters</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Message Details</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form id="add-form" method="POST" action="functions/add_voters.php" enctype="multipart/form-data">
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!-- Left Column -->
-                                <div class="form-group">
-                                    <label for="profile_picture">Profile Picture</label>
-                                    <input type="file" name="profile_picture" class="form-control-file" id="profile_picture" accept="image/jpeg, image/png">
-                                    <img id="preview" src="#" alt="Profile Picture Preview" style="display: none; max-width: 100px; max-height: 100px;">
-                                </div>
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" name="name" class="form-control" id="name" placeholder="Enter Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input type="email" name="email" class="form-control" id="email" placeholder="Enter Email" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="age">Age</label>
-                                    <input type="number" name="age" class="form-control" id="age" placeholder="Enter Age" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="birthday">Birthday</label>
-                                    <input type="text" name="birthday" class="form-control" id="birthday" placeholder="Select Birthday" required>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <!-- Right Column -->
-                                <div class="form-group">
-                                    <label for="contact">Contact</label>
-                                    <input type="text" name="contact" class="form-control" id="contact" placeholder="Enter Contact" required pattern="[0-9]{11}" maxlength="11">
-                                </div>
-                                <div class="form-group">
-                                    <label for="occupation">Occupation</label>
-                                    <input type="text" name="occupation" class="form-control" id="occupation" placeholder="Enter Occupation" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="address">Address</label>
-                                    <input type="text" name="address" class="form-control" id="address" placeholder="Enter Address" required>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add Voters</button>
-                    </div>
-                </form>
+                <div class="modal-body">
+                    <p><strong>Name:</strong> <span id="modalName"></span></p>
+                    <p><strong>Email:</strong> <span id="modalEmail"></span></p>
+                    <p><strong>Message:</strong> <span id="modalMessage"></span></p>
+                </div>
             </div>
         </div>
     </div>
@@ -293,14 +245,13 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- Delete Modal -->
     <div id="deleteModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-            <!-- Modal content -->
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Confirm Deletion</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to delete this data?
+                    Are you sure you want to delete this message?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
@@ -335,51 +286,24 @@ $voter = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!-- SWEETALERT -->
     <script src="../assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="ajax/add_voters.js"></script>
-    <script src="ajax/delete_voter.js"></script>
+    <script src="ajax/delete_message.js"></script>
     <script>
         $(document).ready(function() {
-            $(".approve-btn").on("click", function() {
-                var voterId = $(this).data("voter-id");
+            $('.viewBtn').on('click', function() {
 
-                HoldOn.open({
-                    theme: 'sk-rect',
-                    message: 'Please wait...'
-                });
+                var id = $(this).data('id');
+                var name = $(this).data('name');
+                var email = $(this).data('email');
+                var message = $(this).data('message');
 
-                $.ajax({
-                    type: "POST",
-                    url: "functions/update_status.php",
-                    data: {
-                        voterId: voterId,
-                        status: "Approve"
-                    },
-                    success: function(response) {
-                        console.log(response);
+                $('#modalName').text(name);
+                $('#modalEmail').text(email);
+                $('#modalMessage').text(message);
 
-                        if (response.status === "success") {
-                            HoldOn.close();
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Success!',
-                                text: response.message,
-                                timer: 2000,
-                                showConfirmButton: false
-                            });
-                            setTimeout(function() {
-                                location.reload();
-                            }, 2000);
-                        } else {
-                            console.error("Error updating status: ", response.error);
-                        }
-                    },
-                    error: function(error) {
-                        console.error("Error updating status: ", error);
-                    }
-                });
+                console.log('Viewing message with ID:', id);
             });
         });
     </script>
-
 
 </body>
 

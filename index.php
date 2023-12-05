@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="assets/css/main.css" />
     <link rel="shortcut icon" href="assets/dashboard/img/comelec.png" type="image/x-icon">
-
+    <link rel="stylesheet" href="assets/form/js/sweetalert2/dist/sweetalert2.css">
     <noscript>
         <link rel="stylesheet" href="assets/css/noscript.css" />
     </noscript>
@@ -143,7 +143,7 @@
         <section id="contact">
             <div class="inner">
                 <section>
-                    <form method="post" action="">
+                    <form id="contactForm" class="contactForm" method="post" action="functions/contact.php">
                         <div class="fields">
                             <div class="field half">
                                 <label for="name">Name</label>
@@ -221,6 +221,8 @@
     <script src="assets/js/breakpoints.min.js"></script>
     <script src="assets/js/util.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="assets/form/js/sweetalert2/dist/sweetalert2.min.js"></script>
+    <script src="assets/js/contact.js"></script>
 
 </body>
 
